@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Black Friday IBPROF | A maior Black da Educação Musical</title>
+<meta name="description" content="Black Friday IBPROF: Pós-Graduação em Educação Musical, Método Criança e Música, Didática Criativa e Professor Criativo em uma condição que não vai se repetir. Entre no Grupo VIP.">
+<meta property="og:title" content="Black Friday IBPROF">
+<meta property="og:description" content="A maior Black Friday da Educação Musical. Entre no Grupo VIP e seja o primeiro a ver a oferta.">
+<meta property="og:image" content="imagens/og-capa.jpg">
+<meta name="theme-color" content="#050608">
+<link rel="icon" href="imagens/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --preto:#050608;
+    --preto-2:#0d0f14;
+    --painel:#14171e;
+    --linha:#262b36;
+    --azul:#1f6bff;
+    --azul-claro:#5b93ff;
+    --azul-escuro:#0a2a6b;
+    --ouro:#d4a937;
+    --ouro-claro:#f3d27a;
+    --ouro-escuro:#9a7420;
+    --texto:#e9ecf2;
+    --texto-2:#a3abba;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--preto);color:var(--texto);font-family:'Poppins',system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  .container{width:100%;max-width:1120px;margin:0 auto;padding:0 20px}
+  .ouro{color:var(--ouro)}
+  .grad-ouro{background:linear-gradient(180deg,var(--ouro-claro),var(--ouro) 55%,var(--ouro-escuro));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  /* ===== BARRA CONTAGEM ===== */
+  .barra{position:sticky;top:0;z-index:50;background:linear-gradient(90deg,var(--azul-escuro),var(--azul) 50%,var(--azul-escuro));border-bottom:1px solid rgba(212,169,55,.5);box-shadow:0 4px 18px rgba(0,0,0,.45)}
+  .barra .container{display:flex;align-items:center;justify-content:center;gap:16px;padding-top:8px;padding-bottom:8px;flex-wrap:wrap}
+  .barra .rot{font-weight:700;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase}
+  .relogio{display:flex;gap:10px}
+  .relogio div{text-align:center;min-width:38px}
+  .relogio b{display:block;font-family:'Archivo Black',sans-serif;font-size:1.25rem;line-height:1;color:var(--ouro-claro)}
+  .relogio span{font-size:.62rem;text-transform:uppercase;opacity:.85}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;padding:70px 0 90px;background:
+      radial-gradient(900px 500px at 85% 30%,rgba(31,107,255,.28),transparent 60%),
+      radial-gradient(700px 400px at 10% 90%,rgba(212,169,55,.12),transparent 60%),
+      linear-gradient(180deg,#000,var(--preto));overflow:hidden}
+  .hero .container{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+  .selo-topo{display:inline-block;background:#1b1e26;border:1px solid var(--linha);color:var(--texto-2);font-weight:700;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:9px 16px;border-radius:4px;margin-bottom:22px}
+  .marca{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:22px}
+  .marca .logo{height:64px;width:auto}
+  .marca .logo-txt{display:none;font-family:'Archivo Black',sans-serif;font-size:1.8rem;letter-spacing:.02em}
+  .data{display:inline-flex;align-items:center;gap:8px;background:#1b1e26;border:1px solid var(--linha);padding:7px 14px;border-radius:4px;font-size:.85rem}
+  .data b{color:var(--ouro-claro)}
+  .hero h1{font-size:clamp(1.6rem,3.2vw,2.3rem);font-weight:800;line-height:1.2;margin-bottom:14px}
+  .hero .sub{color:var(--texto-2);font-size:1.02rem;margin-bottom:22px;max-width:520px}
+  .hero .sub strong{color:var(--ouro-claro)}
+  .hero .sub u{color:var(--azul-claro);text-decoration-color:var(--azul-claro)}
+  .form-txt{font-size:.8rem;color:var(--texto-2);margin-bottom:10px}
+  .form-txt b{color:var(--texto)}
+  form.cap{display:grid;gap:10px;max-width:440px}
+  form.cap input[type=text],form.cap input[type=email],form.cap input[type=tel]{width:100%;padding:14px 16px;border-radius:6px;border:1px solid #2c3240;background:#fff;color:#111;font:inherit;font-size:.95rem}
+  form.cap input:focus{outline:3px solid rgba(31,107,255,.55);outline-offset:1px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;font:inherit;font-weight:800;text-transform:uppercase;letter-spacing:.03em;text-decoration:none;border-radius:8px;transition:transform .15s,box-shadow .15s,filter .15s}
+  .btn:hover{transform:translateY(-2px);filter:brightness(1.07)}
+  .btn-ouro{background:linear-gradient(180deg,var(--ouro-claro),var(--ouro) 60%,var(--ouro-escuro));color:#1a1206;padding:16px 22px;font-size:.95rem;box-shadow:0 8px 28px rgba(212,169,55,.35)}
+  .btn-azul{background:linear-gradient(180deg,var(--azul-claro),var(--azul));color:#fff;padding:17px 34px;font-size:.95rem;box-shadow:0 10px 30px rgba(31,107,255,.45)}
+  .btn[disabled]{opacity:.7;cursor:wait;transform:none}
+  .aceite{display:flex;gap:9px;align-items:flex-start;font-size:.72rem;color:var(--texto-2);line-height:1.4}
+  .aceite input{margin-top:2px;accent-color:var(--ouro);width:15px;height:15px;flex:none}
+  .msg-erro{color:#ff7b7b;font-size:.8rem;min-height:1em}
+
+  .hero-arte{position:relative;min-height:440px;display:flex;align-items:center;justify-content:center}
+  .hero-arte .foto{position:relative;z-index:2;max-height:520px;width:auto;filter:drop-shadow(0 20px 40px rgba(0,0,0,.7));-webkit-mask-image:linear-gradient(180deg,#000 75%,transparent);mask-image:linear-gradient(180deg,#000 75%,transparent)}
+  .hero-arte .tipo{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1;pointer-events:none;user-select:none}
+  .hero-arte .tipo .b1{font-family:'Archivo Black',sans-serif;font-size:clamp(4rem,10vw,8.5rem);line-height:.9;color:transparent;-webkit-text-stroke:2px rgba(91,147,255,.55)}
+  .hero-arte .tipo .b2{font-family:'Archivo Black',sans-serif;font-size:clamp(4rem,10vw,8.5rem);line-height:.9;color:transparent;-webkit-text-stroke:2px rgba(212,169,55,.7)}
+  .hero-arte.tem-foto .tipo{opacity:.55;justify-content:flex-end;padding-bottom:30px}
+
+  /* ===== PREPARE-SE ===== */
+  .prep{padding:30px 0 90px}
+  .caixa{max-width:900px;margin:0 auto;background:linear-gradient(180deg,var(--painel),var(--preto-2));border:1px solid var(--linha);border-radius:10px;padding:56px 56px 60px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+  .caixa h2{font-family:'Archivo Black',sans-serif;font-size:clamp(2rem,5vw,3.1rem);text-align:center;letter-spacing:.01em;line-height:1.05;margin-bottom:12px}
+  .caixa .lead{text-align:center;color:var(--texto-2);margin-bottom:34px}
+  .caixa .lead u{color:var(--texto);text-decoration-color:var(--ouro)}
+  .caixa .lead b{color:var(--texto)}
+  .intro-lista{text-align:center;color:var(--texto-2);font-size:.95rem;margin:10px 0 18px}
+  .intro-lista b{color:var(--texto)}
+  .lista{list-style:none;display:grid;gap:4px}
+  .item{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px dashed #2a303c}
+  .item:last-child{border-bottom:0}
+  .item .losango{width:9px;height:9px;flex:none;background:var(--ouro);transform:rotate(45deg)}
+  .item .nome{font-weight:600;font-size:.98rem}
+  .item .nome small{display:block;font-weight:400;color:var(--texto-2);font-size:.8rem;margin-top:2px}
+  .item .pontos{flex:1;border-bottom:1px dotted #3a4150;transform:translateY(4px);min-width:20px}
+  .tag{flex:none;font-size:.7rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:6px 10px;border-radius:4px;white-space:nowrap}
+  .tag-mec{background:rgba(31,107,255,.15);color:var(--azul-claro);border:1px solid rgba(91,147,255,.45)}
+  .tag-ouro{background:rgba(212,169,55,.14);color:var(--ouro-claro);border:1px solid rgba(212,169,55,.5)}
+
+  .selos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:38px 0 6px}
+  .selo{background:#0b0d12;border:1px solid var(--linha);border-radius:8px;padding:18px 14px;text-align:center}
+  .selo b{display:block;font-family:'Archivo Black',sans-serif;font-size:1.9rem;line-height:1;margin-bottom:6px}
+  .selo span{font-size:.8rem;color:var(--texto-2)}
+
+  .oferta{margin:44px auto 0;max-width:620px;border-radius:10px;padding:40px 34px;text-align:center;color:#17110a;background:linear-gradient(160deg,#f6dc91,var(--ouro) 55%,#b8892a);box-shadow:0 20px 60px rgba(212,169,55,.25)}
+  .oferta h3{font-size:1.45rem;font-weight:800;line-height:1.25;margin-bottom:22px}
+  .oferta h3 u{text-decoration-thickness:2px}
+  .preco{display:flex;align-items:center;gap:10px;max-width:420px;margin:0 auto 10px;font-weight:700;font-size:.95rem}
+  .preco .pontos{flex:1;border-bottom:1px dotted rgba(23,17,10,.45);transform:translateY(4px)}
+  .preco .seta{font-size:.7rem}
+  .preco .v{white-space:nowrap}
+  .preco .seta.up{color:#a0150f}
+  .preco .seta.down{color:#0a2a6b}
+  .oferta p{font-weight:700;font-size:1.05rem;margin:24px 0 22px;line-height:1.4}
+
+  /* ===== SOBRE ===== */
+  .sobre{position:relative;padding:90px 0;background:radial-gradient(800px 500px at 15% 50%,rgba(31,107,255,.18),transparent 60%),linear-gradient(180deg,var(--preto),#000)}
+  .sobre .container{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:center}
+  .sobre-img{position:relative;border-radius:10px;overflow:hidden;min-height:380px;background:linear-gradient(160deg,#0f1a33,#05070c);border:1px solid var(--linha);display:flex;align-items:center;justify-content:center}
+  .sobre-img img{width:100%;height:100%;object-fit:cover}
+  .sobre-img .ph{font-family:'Archivo Black',sans-serif;font-size:4rem;color:transparent;-webkit-text-stroke:2px rgba(212,169,55,.6)}
+  .sobre h2{font-size:clamp(1.5rem,3vw,2rem);font-weight:800;margin-bottom:18px}
+  .sobre p{color:var(--texto-2);margin-bottom:14px;font-size:.96rem}
+  .sobre p b{color:var(--texto)}
+
+  /* ===== RODAPÉ ===== */
+  footer{background:#0b0c10;border-top:1px solid var(--linha);padding:44px 0 30px;font-size:.78rem;color:#7d8596}
+  footer .aviso{max-width:880px;margin:0 auto 30px;text-align:center;line-height:1.6}
+  footer .emp{max-width:880px;margin:0 auto}
+  footer .emp strong{display:block;color:var(--texto);font-size:.95rem;margin-bottom:6px}
+  footer .base{max-width:880px;margin:24px auto 0;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  footer .base a{text-decoration:none}
+  footer .base a:hover{color:var(--texto)}
+
+  /* ===== RESPONSIVO ===== */
+  @media (max-width:900px){
+    .hero{padding:40px 0 60px}
+    .hero .container,.sobre .container{grid-template-columns:1fr}
+    .hero-arte{order:-1;min-height:260px}
+    .hero-arte .foto{max-height:340px}
+    form.cap{max-width:none}
+    .caixa{padding:40px 22px 44px}
+    .sobre-img{min-height:300px}
+  }
+  @media (max-width:560px){
+    .barra .rot{font-size:.7rem}
+    .relogio{gap:6px}
+    .relogio div{min-width:30px}
+    .relogio b{font-size:1.05rem}
+    .item{flex-wrap:wrap;gap:8px 10px}
+    .item .pontos{display:none}
+    .item .nome{flex:1 1 calc(100% - 30px)}
+    .item .tag{margin-left:21px}
+    .selos{grid-template-columns:1fr}
+    .oferta{padding:32px 18px}
+    .preco{font-size:.82rem;text-align:left;gap:6px}
+    .btn-azul{width:100%;padding:17px 16px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== BARRA DE CONTAGEM ===== -->
+<div class="barra">
+  <div class="container">
+    <span class="rot">Faltam</span>
+    <div class="relogio" aria-live="off">
+      <div><b data-d>00</b><span>Dias</span></div>
+      <div><b data-h>00</b><span>Horas</span></div>
+      <div><b data-m>00</b><span>Min</span></div>
+      <div><b data-s>00</b><span>Seg</span></div>
+    </div>
+    <span class="rot">para a revelação da oferta</span>
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="container">
+    <div>
+      <span class="selo-topo">Uma condição que não vai se repetir</span>
+      <div class="marca">
+        <img class="logo" src="imagens/logo.png" alt="IBPROF" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="logo-txt"><span class="grad-ouro">BLACK</span> IBPROF</span>
+        <span class="data">📅 <b class="js-data-txt">[DATA]</b> às <b class="js-hora-txt">[HORA]</b></span>
+      </div>
+      <h1>A maior <span class="grad-ouro">Black Friday</span> da Educação Musical do IBPROF.</h1>
+      <p class="sub">
+        <strong>Pós-Graduação + 2 Cursos de Extensão Universitária + Oficina Professor Criativo</strong>
+        em uma única condição, com <u>3 certificados reconhecidos pelo MEC</u>.
+      </p>
+      <p class="form-txt">Preencha com seu e-mail e WhatsApp para participar desta <b>oferta exclusiva</b> 👇</p>
+      <form class="cap" novalidate>
+        <input type="email" name="email" placeholder="Digite o seu melhor e-mail" autocomplete="email" required>
+        <input type="tel" name="whatsapp" placeholder="Digite seu WhatsApp com DDD" autocomplete="tel" inputmode="tel" required>
+        <button class="btn btn-ouro" type="submit">Participar e entrar no Grupo VIP</button>
+        <label class="aceite"><input type="checkbox" name="aceite" checked required> Estou ciente e concordo que meus dados serão usados para receber as informações sobre a Black Friday IBPROF e eventos futuros.</label>
+        <p class="msg-erro" role="alert"></p>
+      </form>
+    </div>
+
+    <div class="hero-arte" id="heroArte">
+      <div class="tipo" aria-hidden="true">
+        <span class="b1">BLACK</span>
+        <span class="b2">2026</span>
+      </div>
+      <img class="foto" src="imagens/hero.png" alt="" onerror="this.remove()" onload="document.getElementById('heroArte').classList.add('tem-foto')">
+    </div>
+  </div>
+</header>
+
+<!-- ===== PREPARE-SE ===== -->
+<section class="prep">
+  <div class="container">
+    <div class="caixa">
+      <h2>PREPARE-SE</h2>
+      <p class="lead">para a <u>maior oportunidade do ano</u> para quem quer se tornar <b>referência em Educação Musical</b>.</p>
+
+      <p class="intro-lista">Na Black Friday IBPROF você terá acesso a <b>4 formações</b> em uma única condição:</p>
+
+      <ul class="lista">
+        <li class="item">
+          <span class="losango"></span>
+          <span class="nome">Pós-Graduação em Educação Musical<small>Especialização com certificado reconhecido pelo MEC</small></span>
+          <span class="pontos"></span>
+          <span class="tag tag-mec">Certificado MEC</span>
+        </li>
+        <li class="item">
+          <span class="losango"></span>
+          <span class="nome">Método Criança e Música<small>Curso de Extensão Universitária</small></span>
+          <span class="pontos"></span>
+          <span class="tag tag-mec">Certificado MEC</span>
+        </li>
+        <li class="item">
+          <span class="losango"></span>
+          <span class="nome">Didática Criativa<small>Curso de Extensão Universitária</small></span>
+          <span class="pontos"></span>
+          <span class="tag tag-mec">Certificado MEC</span>
+        </li>
+        <li class="item">
+          <span class="losango"></span>
+          <span class="nome">Professor Criativo<small>Oficina gravada</small></span>
+          <span class="pontos"></span>
+          <span class="tag tag-ouro">Incluso</span>
+        </li>
+      </ul>
+
+      <div class="selos">
+        <div class="selo"><b class="grad-ouro">4</b><span>formações em uma única condição</span></div>
+        <div class="selo"><b class="grad-ouro">3</b><span>certificados reconhecidos pelo MEC</span></div>
+        <div class="selo"><b class="grad-ouro">1</b><span>oferta que só será revelada no Grupo VIP</span></div>
+      </div>
+
+      <div class="oferta">
+        <h3>Oferta Black Friday<br><u>Combo IBPROF</u></h3>
+        <div class="preco"><span class="seta up">▲</span><span>Valor de todos os cursos hoje</span><span class="pontos"></span><span class="v">R$ [VALOR]</span></div>
+        <div class="preco"><span class="seta down">▼</span><span>Preço Black Friday (<span class="js-data-curta">[DATA]</span>)</span><span class="pontos"></span><span class="v">R$ ????</span></div>
+        <p>Clique no botão abaixo e faça parte do<br>Grupo VIP da Black Friday IBPROF</p>
+        <a class="btn btn-azul" href="#topo-form">Clique aqui para participar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOBRE ===== -->
+<section class="sobre">
+  <div class="container">
+    <div class="sobre-img">
+      <img src="imagens/sobre.jpg" alt="IBPROF" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'ph',textContent:'IBPROF'}))">
+    </div>
+    <div>
+      <h2><span class="grad-ouro">Quem é o IBPROF?</span></h2>
+      <p>[TEXTO SOBRE O IBPROF: história, tempo de mercado, número de alunos formados e diferenciais.]</p>
+      <p>[TEXTO SOBRE OS PROFESSORES/COORDENAÇÃO: formação, experiência e resultados.]</p>
+      <p>[TEXTO SOBRE A PROPOSTA: por que a formação do IBPROF transforma a prática do professor de música.]</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RODAPÉ ===== -->
+<footer>
+  <div class="container">
+    <p class="aviso">Este produto não garante a obtenção de resultados. Qualquer referência ao desempenho de uma estratégia não deve ser interpretada como uma garantia de resultados. Este site não é afiliado ao Facebook, Instagram ou a qualquer entidade da Meta. Depois que você sair do Facebook, a responsabilidade não é deles e sim do nosso site.</p>
+    <div class="emp">
+      <strong>[RAZÃO SOCIAL]</strong>
+      <div><b>CNPJ:</b> [CNPJ]</div>
+      <div><b>Contato:</b> [E-MAIL DE CONTATO]</div>
+    </div>
+    <div class="base">
+      <span>© <span class="js-ano"></span> IBPROF. Todos os direitos reservados.</span>
+      <span><a href="#">Política de Privacidade</a> &nbsp;|&nbsp; <a href="#">Termos de Uso</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ================= CONFIGURAÇÃO =================
+   Ajuste aqui: data da revelação, para onde vão os leads e o link do grupo. */
+var CONFIG = {
+  revelacao: '2026-11-27T19:30:00-03:00',   // data/hora da revelação da oferta (horário de Brasília)
+  webhook: '',                               // URL que recebe os leads (ActiveCampaign, RD, n8n, Make, Planilha...)
+  grupoVip: ''                               // link do grupo VIP (WhatsApp) para onde o lead é enviado
+};
+
+(function(){
+  var alvo = new Date(CONFIG.revelacao).getTime();
+  var meses = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+  var dataBR = new Date(alvo - 3*3600e3); // exibe sempre em horário de Brasília
+  function dois(n){return (n<10?'0':'')+n;}
+  document.querySelectorAll('.js-data-txt').forEach(function(el){el.textContent = dataBR.getUTCDate()+' de '+meses[dataBR.getUTCMonth()];});
+  document.querySelectorAll('.js-hora-txt').forEach(function(el){el.textContent = dataBR.getUTCHours()+'h'+dois(dataBR.getUTCMinutes());});
+  document.querySelectorAll('.js-data-curta').forEach(function(el){el.textContent = dois(dataBR.getUTCDate())+'/'+dois(dataBR.getUTCMonth()+1);});
+  document.querySelectorAll('.js-ano').forEach(function(el){el.textContent = new Date().getFullYear();});
+
+  var D=document.querySelector('[data-d]'),H=document.querySelector('[data-h]'),M=document.querySelector('[data-m]'),S=document.querySelector('[data-s]');
+  function tic(){
+    var r = Math.max(0, alvo - Date.now());
+    D.textContent=dois(Math.floor(r/864e5)); H.textContent=dois(Math.floor(r/36e5)%24);
+    M.textContent=dois(Math.floor(r/6e4)%60); S.textContent=dois(Math.floor(r/1e3)%60);
+  }
+  tic(); setInterval(tic,1000);
+
+  // Botões "participar" levam ao formulário
+  var form = document.querySelector('form.cap');
+  document.querySelectorAll('a[href="#topo-form"]').forEach(function(a){
+    a.addEventListener('click',function(e){e.preventDefault();form.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(function(){form.email.focus();},500);});
+  });
+
+  // Máscara de WhatsApp
+  var tel = form.whatsapp;
+  tel.addEventListener('input',function(){
+    var v = tel.value.replace(/\D/g,'').slice(0,11);
+    if(v.length>10) v = '('+v.slice(0,2)+') '+v.slice(2,7)+'-'+v.slice(7);
+    else if(v.length>6) v = '('+v.slice(0,2)+') '+v.slice(2,6)+'-'+v.slice(6);
+    else if(v.length>2) v = '('+v.slice(0,2)+') '+v.slice(2);
+    else if(v.length) v = '('+v;
+    tel.value = v;
+  });
+
+  // Envio do lead
+  var erro = form.querySelector('.msg-erro');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var email=form.email.value.trim(), fone=tel.value.replace(/\D/g,'');
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){erro.textContent='Digite um e-mail válido.';form.email.focus();return;}
+    if(fone.length<10){erro.textContent='Digite seu WhatsApp com DDD.';tel.focus();return;}
+    if(!form.aceite.checked){erro.textContent='Marque a caixa de ciência para continuar.';return;}
+    erro.textContent='';
+    var btn=form.querySelector('button'); btn.disabled=true; btn.textContent='Enviando...';
+
+    var params=new URLSearchParams(location.search), utm={};
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k){if(params.get(k))utm[k]=params.get(k);});
+    var lead=Object.assign({email:email,whatsapp:'55'+fone,pagina:location.href,data:new Date().toISOString()},utm);
+
+    if(window.fbq) window.fbq('track','Lead',{content_name:'Black Friday IBPROF'});
+
+    var envio = CONFIG.webhook
+      ? fetch(CONFIG.webhook,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify(lead)}).catch(function(){})
+      : Promise.resolve();
+    var limite = new Promise(function(r){setTimeout(r,2500);});
+    Promise.race([envio,limite]).then(function(){
+      if(CONFIG.grupoVip){location.href=CONFIG.grupoVip;}
+      else{btn.textContent='Inscrição confirmada!';}
+    });
+  });
+})();
+</script>
+</body>
+</html>
