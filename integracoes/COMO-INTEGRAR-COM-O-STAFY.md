@@ -245,20 +245,44 @@ verdade (contato, lista, tags, fluxos) depende do formulário criado no item 1.
 | ![Erro do Stafy](prints/pagina-3-erro-do-stafy.png) | |
 | O Stafy recusou o telefone (422): mensagem em português e o botão de volta | |
 
-**Do Stafy**: o Stafy local não estava no ar na hora do teste, então estes prints **ficaram por
-tirar**. As telas são estas, na ordem do passo a passo:
+**Do Stafy**: tirados no Stafy local (banco de teste, negócio `empresa-teste`, com um formulário
+"Black IBPROF — Grupo VIP" criado só para os prints e apagado depois). No Stafy de verdade, o endereço
+começa com `https://www.stafy.app` e termina com o negócio do IBPROF.
 
-1. **Formulários do negócio** (`/negocios/<negocio>/formularios`), com o botão **Novo formulário**.
-2. **Editar formulário › passo 1 "O que a pessoa preenche"**, com os 3 campos: Nome (`name`), Email
-   (`email`), WhatsApp (`phone`).
-3. **Passo 2 "Para onde vai depois"**, em branco.
-4. **Passo 3 "O que acontece ao receber"**, com a lista e as tags.
-5. **Passo 4 "Onde publicar" › "Já tenho um formulário na minha página"**, com o endereço de
-   integração e o botão **Copiar o endereço de integração**.
+1. **Formulários do negócio** (`/negocios/<negocio>/formularios`), com o botão **Novo formulário**:
+
+   ![Formulários do negócio](prints/stafy-1-formularios.png)
+
+2. **Editar formulário › passo 1 "O que a pessoa preenche"**, com os 3 campos padrão: Nome (`name`),
+   Email (`email`), WhatsApp (`phone`). Não precisa criar campo nenhum:
+
+   ![Passo 1 — os campos](prints/stafy-2-passo1-campos.png)
+
+3. **Passo 2 "Para onde vai depois"**, em branco (a página manda para o obrigado):
+
+   ![Passo 2 — destino](prints/stafy-3-passo2-destino.png)
+
+4. **Passo 3 "O que acontece ao receber"**: a lista, as tags, o funil, o WhatsApp e o webhook:
+
+   ![Passo 3 — ao receber](prints/stafy-4-passo3-ao-receber.png)
+
+5. **Passo 4 "Onde publicar" › "Já tenho um formulário na minha página"**: o **endereço de
+   integração**, que é o que vai em `CONFIG.stafy.endereco` (o botão de copiar fica à direita):
+
+   ![Passo 4 — o endereço de integração](prints/stafy-5-passo4-endereco-de-integracao.png)
+
 6. **Passo 4 › "Os nomes dos campos — para a sua página e para as mensagens"**: a tabela
-   `name`/`email`/`phone` com as tags `%FULLNAME%`, `%EMAIL%` e `%PHONE%`.
-7. **Porteiro › "Ligar a origem da página"**: a gaveta com o trecho do script.
-8. Depois do primeiro teste real: **a ficha do contato**, com a origem "formulário" e as UTMs.
+   `name`/`email`/`phone` com as tags `%FULLNAME%`, `%EMAIL%` e `%PHONE%`:
+
+   ![Passo 4 — os nomes dos campos](prints/stafy-6-passo4-nomes-dos-campos.png)
+
+7. **Porteiro › "Ligar a origem da página"**: a gaveta com o trecho do script, o mesmo que já está no
+   `<head>` do `index.html`:
+
+   ![Porteiro — a origem da página](prints/stafy-7-porteiro-origem-da-pagina.png)
+
+8. **Ficou por tirar**: a ficha do contato com a origem "formulário" e as UTMs. Ela só existe depois do
+   primeiro cadastro real (item 4.2).
 
 ---
 
