@@ -12,7 +12,7 @@
 <link rel="icon" href="imagens/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#030406;
@@ -36,7 +36,7 @@
   img,svg{display:block;max-width:100%}
   a{color:inherit}
   .container{width:100%;max-width:1160px;margin:0 auto;padding:0 24px}
-  .serif{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:500;letter-spacing:0}
+  .serif{color:var(--ouro-claro)}
   .ouro{color:var(--ouro-claro)}
   .eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--ouro)}
   .eyebrow::before{content:"";width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--ouro))}
@@ -67,25 +67,25 @@
   .hero .container{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
   .hero .logo-bf{margin:26px 0 34px}
   .hero h1{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(2rem,4.2vw,3.25rem);line-height:1.08;letter-spacing:-.02em;margin-bottom:20px}
-  .hero h1 .serif{font-size:1.12em;font-weight:500;color:var(--ouro-claro);letter-spacing:-.01em}
   .hero .sub{color:var(--texto-2);font-size:1.05rem;font-weight:300;max-width:520px;margin-bottom:32px}
   .hero .sub b{color:var(--texto);font-weight:500}
 
-  .form-card{position:relative;max-width:470px;padding:26px;border-radius:16px;background:linear-gradient(180deg,rgba(18,26,48,.55),rgba(8,10,16,.8));border:1px solid var(--linha-2);box-shadow:0 30px 80px -20px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.05)}
+  .form-card{position:relative;max-width:470px;padding:26px;border-radius:16px;background:linear-gradient(180deg,#101b3d,#0a1028);border:1px solid rgba(232,214,168,.28);box-shadow:0 30px 80px -20px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.05)}
   .form-card::before{content:"";position:absolute;inset:-1px;border-radius:16px;padding:1px;background:linear-gradient(140deg,rgba(201,169,107,.55),transparent 35%,transparent 65%,rgba(91,128,230,.5));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
-  .form-card .form-tit{font-size:.88rem;color:var(--texto-2);margin-bottom:16px}
-  .form-card .form-tit b{color:var(--texto);font-weight:600}
+  .form-card .form-tit{font-family:'Montserrat',sans-serif;font-size:1.2rem;font-weight:800;letter-spacing:-.01em;color:var(--texto);margin-bottom:4px}
+  .form-card .form-sub{font-size:.9rem;color:#c3c9d6;margin-bottom:18px}
+  .form-card .form-sub b{color:var(--ouro-claro);font-weight:600}
   form.cap{display:grid;gap:12px}
-  form.cap input[type=email],form.cap input[type=tel]{width:100%;padding:16px 18px;border-radius:10px;border:1px solid var(--linha-2);background:rgba(255,255,255,.04);color:var(--texto);font:inherit;font-size:.95rem;transition:border-color .2s,background .2s}
-  form.cap input::placeholder{color:var(--texto-3)}
-  form.cap input:focus{outline:none;border-color:var(--ouro);background:rgba(255,255,255,.07)}
+  form.cap input[type=email],form.cap input[type=tel]{width:100%;padding:16px 18px;border-radius:10px;border:2px solid transparent;background:#fff;color:#0b0d12;font:inherit;font-size:1rem;font-weight:500;transition:border-color .2s,background .2s}
+  form.cap input::placeholder{color:#7a808c;font-weight:400}
+  form.cap input:focus{outline:none;border-color:var(--ouro);box-shadow:0 0 0 4px rgba(201,169,107,.25)}
   .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;cursor:pointer;text-decoration:none;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;border-radius:10px;padding:19px 26px;color:#14100a;background:linear-gradient(180deg,#ecdcb2,var(--ouro) 70%);box-shadow:0 14px 40px -10px rgba(201,169,107,.55),inset 0 1px 0 rgba(255,255,255,.5);transition:transform .2s,box-shadow .2s;overflow:hidden}
   .btn::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:brilho 4.5s ease-in-out infinite}
   @keyframes brilho{0%,70%{left:-60%}100%{left:130%}}
   .btn:hover{transform:translateY(-2px);box-shadow:0 20px 50px -10px rgba(201,169,107,.7),inset 0 1px 0 rgba(255,255,255,.5)}
   .btn[disabled]{opacity:.75;cursor:wait;transform:none}
   .btn .seta{font-size:1.1em;letter-spacing:0}
-  .aceite{display:flex;gap:10px;align-items:flex-start;font-size:.72rem;color:var(--texto-3);line-height:1.45}
+  .aceite{display:flex;gap:10px;align-items:flex-start;font-size:.74rem;color:#aab1bf;line-height:1.45}
   .aceite input{margin-top:2px;accent-color:var(--ouro);width:14px;height:14px;flex:none}
   .msg-erro{color:#f19a9a;font-size:.8rem;min-height:1em}
   .confianca{display:flex;gap:22px;flex-wrap:wrap;margin-top:22px;font-size:.78rem;color:var(--texto-2)}
@@ -102,10 +102,10 @@
   @keyframes gira{to{transform:rotate(360deg)}}
   .arte .num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
   .arte .num small{font-family:'Montserrat',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.42em;text-transform:uppercase;color:var(--texto-2);margin-bottom:10px;padding-left:.42em}
-  .arte .num strong{font-variant-numeric:lining-nums;font-feature-settings:'lnum' 1;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(5rem,12vw,9.5rem);line-height:.9;letter-spacing:-.02em;color:var(--texto);text-shadow:0 0 40px rgba(91,128,230,.45)}
+  .arte .num strong{font-variant-numeric:lining-nums;font-feature-settings:'lnum' 1;font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(4.2rem,9vw,7.4rem);line-height:.95;letter-spacing:-.04em;color:var(--texto);text-shadow:0 0 40px rgba(91,128,230,.45)}
   .arte .num strong em{font-style:normal;color:var(--ouro)}
   .arte .num .tracinho{width:60px;height:1px;background:var(--ouro);margin:18px 0 14px}
-  .arte .num span{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.35rem;color:var(--ouro-claro)}
+  .arte .num span{font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--ouro-claro)}
   .arte .ponto{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--ouro-claro);box-shadow:0 0 16px 3px rgba(232,214,168,.7)}
   .arte .p1{top:5%;left:50%;transform:translate(-50%,-50%)}
   .arte .p2{bottom:22%;right:3.5%}
@@ -122,7 +122,6 @@
   .sec{padding:110px 0;overflow:hidden;isolation:isolate}
   .sec-head{text-align:center;max-width:760px;margin:0 auto 56px}
   .sec-head h2{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(1.9rem,4vw,3rem);line-height:1.1;letter-spacing:-.02em;margin:18px 0 16px}
-  .sec-head h2 .serif{font-size:1.12em;color:var(--ouro-claro)}
   .sec-head p{color:var(--texto-2);font-weight:300;font-size:1.05rem}
   .sec-head p b{color:var(--texto);font-weight:500}
 
@@ -133,7 +132,7 @@
   .grupo-tit + .item{border-top:0}
   .item{display:grid;grid-template-columns:52px 1fr auto;gap:20px;align-items:center;padding:26px 34px;border-top:1px solid var(--linha);transition:background .25s}
   .item:hover{background:rgba(91,128,230,.04)}
-  .item .n{font-feature-settings:'lnum' 1;font-family:'Cormorant Garamond',serif;font-size:2rem;line-height:1;color:var(--ouro)}
+  .item .n{font-feature-settings:'lnum' 1;font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.25rem;line-height:1;color:var(--ouro)}
   .item h3{font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.08rem;letter-spacing:-.01em;margin-bottom:6px}
   .item p{font-size:.86rem;color:var(--texto-2);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
   .mec{display:inline-flex;align-items:center;gap:6px;font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#a9bdf3;padding:4px 9px;border-radius:999px;border:1px solid rgba(91,128,230,.4);background:rgba(91,128,230,.08)}
@@ -144,12 +143,11 @@
   .oferta{position:relative;z-index:1;max-width:860px;margin:34px auto 0;border-radius:18px;padding:52px 40px;text-align:center;overflow:hidden;background:radial-gradient(ellipse at 50% 0%,rgba(22,52,128,.55),transparent 60%),linear-gradient(180deg,#0a1024,#05070c);border:1px solid rgba(201,169,107,.35)}
   .oferta::before{content:"";position:absolute;top:0;left:50%;width:60%;height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,var(--ouro-claro),transparent)}
   .oferta h3{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(1.4rem,3vw,1.9rem);letter-spacing:-.01em;margin:14px 0 30px}
-  .oferta h3 .serif{color:var(--ouro-claro);font-size:1.15em}
   .precos{display:grid;grid-template-columns:1fr 1px 1fr;gap:28px;align-items:center;max-width:560px;margin:0 auto 34px}
   .precos .div{height:70px;background:var(--linha-2)}
   .precos small{display:block;font-family:'Montserrat',sans-serif;font-size:.66rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--texto-3);margin-bottom:8px}
   .precos .de{font-family:'Montserrat',sans-serif;font-size:1.5rem;font-weight:500;color:var(--texto-2);text-decoration:line-through;text-decoration-color:rgba(241,154,154,.7);text-decoration-thickness:2px}
-  .precos .por{font-feature-settings:'lnum' 1;font-family:'Cormorant Garamond',serif;font-size:3rem;line-height:1;color:var(--ouro-claro)}
+  .precos .por{font-feature-settings:'lnum' 1;font-family:'Montserrat',sans-serif;font-weight:800;font-size:2.4rem;line-height:1;letter-spacing:-.02em;color:var(--ouro-claro)}
   .oferta p{color:var(--texto-2);margin-bottom:26px;font-size:.98rem}
   .oferta p b{color:var(--texto);font-weight:500}
 
@@ -169,10 +167,9 @@
   .sobre .g1{width:600px;height:600px;left:-200px;top:50%;transform:translateY(-50%);background:radial-gradient(circle,rgba(22,52,128,.45),transparent 70%)}
   .sobre-img{position:relative;z-index:1;aspect-ratio:4/5;border-radius:18px;overflow:hidden;border:1px solid var(--linha-2);background:radial-gradient(circle at 50% 30%,#13275e,#05070c 70%);display:flex;align-items:center;justify-content:center}
   .sobre-img img{width:100%;height:100%;object-fit:cover}
-  .sobre-img .ph{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:3rem;color:rgba(232,214,168,.5)}
+  .sobre-img .ph{font-family:'Montserrat',sans-serif;font-weight:800;font-size:2.6rem;letter-spacing:.08em;color:rgba(232,214,168,.35)}
   .sobre-txt{position:relative;z-index:1}
   .sobre h2{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(1.8rem,3.4vw,2.6rem);line-height:1.1;letter-spacing:-.02em;margin:18px 0 24px}
-  .sobre h2 .serif{color:var(--ouro-claro);font-size:1.12em}
   .sobre p{color:var(--texto-2);font-weight:300;margin-bottom:16px}
 
   /* cta final */
@@ -280,7 +277,8 @@ src="https://www.facebook.com/tr?id=1456216939376794&ev=PageView&noscript=1" alt
       <p class="sub"><b>Pós-Graduação, 2 cursos de extensão universitária e a Oficina Professor Criativo</b> em uma única condição, com <b>3 certificados reconhecidos pelo MEC</b>.</p>
 
       <div class="form-card" id="inscricao">
-        <p class="form-tit">Entre no <b>Grupo VIP</b> e veja a oferta antes de todo mundo.</p>
+        <p class="form-tit">Entre no Grupo VIP</p>
+        <p class="form-sub">Veja a oferta <b>antes de todo mundo</b> no dia <span class="js-data-curta">11/11</span>.</p>
         <form class="cap" novalidate>
           <input type="email" name="email" placeholder="Seu melhor e-mail" autocomplete="email" required>
           <input type="tel" name="whatsapp" placeholder="Seu WhatsApp com DDD" autocomplete="tel" inputmode="tel" required>
