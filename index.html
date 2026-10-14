@@ -12,7 +12,7 @@
 <link rel="icon" href="imagens/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#030406;
@@ -32,13 +32,13 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{font-variant-numeric:lining-nums;background:var(--bg);color:var(--texto);font-family:'Inter',system-ui,sans-serif;font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body{font-variant-numeric:lining-nums;background:var(--bg);color:var(--texto);font-family:'Poppins',system-ui,sans-serif;font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   img,svg{display:block;max-width:100%}
   a{color:inherit}
   .container{width:100%;max-width:1160px;margin:0 auto;padding:0 24px}
   .serif{color:var(--ouro-claro)}
   .ouro{color:var(--ouro-claro)}
-  .eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--ouro)}
+  .eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:'Poppins',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--ouro)}
   .eyebrow::before{content:"";width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--ouro))}
   .eyebrow.centro::after{content:"";width:34px;height:1px;background:linear-gradient(90deg,var(--ouro),transparent)}
 
@@ -49,10 +49,10 @@
   .barra{position:sticky;top:0;z-index:60;background:rgba(3,4,6,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--linha)}
   .barra::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:linear-gradient(90deg,transparent,rgba(91,128,230,.7),transparent)}
   .barra .container{display:flex;align-items:center;justify-content:center;gap:22px;padding-top:10px;padding-bottom:10px;flex-wrap:wrap}
-  .barra .rot{font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--texto-2)}
+  .barra .rot{font-family:'Poppins',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--texto-2)}
   .relogio{display:flex;align-items:baseline;gap:6px}
   .relogio div{display:flex;align-items:baseline;gap:4px}
-  .relogio b{font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.2rem;color:var(--texto);font-variant-numeric:tabular-nums}
+  .relogio b{font-family:'Poppins',sans-serif;font-weight:700;font-size:1.2rem;color:var(--texto);font-variant-numeric:tabular-nums}
   .relogio span{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ouro)}
   .relogio i{color:var(--texto-3);font-style:normal;margin:0 2px}
 
@@ -66,20 +66,20 @@
   .hero::before{content:"";position:absolute;inset:0;z-index:0;background-image:linear-gradient(var(--linha) 1px,transparent 1px),linear-gradient(90deg,var(--linha) 1px,transparent 1px);background-size:80px 80px;-webkit-mask-image:radial-gradient(ellipse at 70% 40%,#000 0%,transparent 65%);mask-image:radial-gradient(ellipse at 70% 40%,#000 0%,transparent 65%);opacity:.5}
   .hero .container{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
   .hero .logo-bf{margin:26px 0 34px}
-  .hero h1{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(2rem,4.2vw,3.25rem);line-height:1.08;letter-spacing:-.02em;margin-bottom:20px}
+  .hero h1{font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(2rem,4.2vw,3.25rem);line-height:1.1;letter-spacing:-.01em;margin-bottom:20px}
   .hero .sub{color:var(--texto-2);font-size:1.05rem;font-weight:300;max-width:520px;margin-bottom:32px}
   .hero .sub b{color:var(--texto);font-weight:500}
 
   .form-card{position:relative;max-width:470px;padding:26px;border-radius:16px;background:linear-gradient(180deg,#101b3d,#0a1028);border:1px solid rgba(232,214,168,.28);box-shadow:0 30px 80px -20px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.05)}
   .form-card::before{content:"";position:absolute;inset:-1px;border-radius:16px;padding:1px;background:linear-gradient(140deg,rgba(201,169,107,.55),transparent 35%,transparent 65%,rgba(91,128,230,.5));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
-  .form-card .form-tit{font-family:'Montserrat',sans-serif;font-size:1.2rem;font-weight:800;letter-spacing:-.01em;color:var(--texto);margin-bottom:4px}
+  .form-card .form-tit{font-family:'Poppins',sans-serif;font-size:1.2rem;font-weight:800;letter-spacing:-.01em;color:var(--texto);margin-bottom:4px}
   .form-card .form-sub{font-size:.9rem;color:#c3c9d6;margin-bottom:18px}
   .form-card .form-sub b{color:var(--ouro-claro);font-weight:600}
   form.cap{display:grid;gap:12px}
   form.cap input[type=email],form.cap input[type=tel]{width:100%;padding:16px 18px;border-radius:10px;border:2px solid transparent;background:#fff;color:#0b0d12;font:inherit;font-size:1rem;font-weight:500;transition:border-color .2s,background .2s}
   form.cap input::placeholder{color:#7a808c;font-weight:400}
   form.cap input:focus{outline:none;border-color:var(--ouro);box-shadow:0 0 0 4px rgba(201,169,107,.25)}
-  .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;cursor:pointer;text-decoration:none;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;border-radius:10px;padding:19px 26px;color:#14100a;background:linear-gradient(180deg,#ecdcb2,var(--ouro) 70%);box-shadow:0 14px 40px -10px rgba(201,169,107,.55),inset 0 1px 0 rgba(255,255,255,.5);transition:transform .2s,box-shadow .2s;overflow:hidden}
+  .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;cursor:pointer;text-decoration:none;font-family:'Poppins',sans-serif;font-weight:700;font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;border-radius:10px;padding:19px 26px;color:#14100a;background:linear-gradient(180deg,#ecdcb2,var(--ouro) 70%);box-shadow:0 14px 40px -10px rgba(201,169,107,.55),inset 0 1px 0 rgba(255,255,255,.5);transition:transform .2s,box-shadow .2s;overflow:hidden}
   .btn::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:brilho 4.5s ease-in-out infinite}
   @keyframes brilho{0%,70%{left:-60%}100%{left:130%}}
   .btn:hover{transform:translateY(-2px);box-shadow:0 20px 50px -10px rgba(201,169,107,.7),inset 0 1px 0 rgba(255,255,255,.5)}
@@ -101,11 +101,11 @@
   .arte .a3{inset:16%;border-color:rgba(255,255,255,.07)}
   @keyframes gira{to{transform:rotate(360deg)}}
   .arte .num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-  .arte .num small{font-family:'Montserrat',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.42em;text-transform:uppercase;color:var(--texto-2);margin-bottom:10px;padding-left:.42em}
-  .arte .num strong{font-variant-numeric:lining-nums;font-feature-settings:'lnum' 1;font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(4.2rem,9vw,7.4rem);line-height:.95;letter-spacing:-.04em;color:var(--texto);text-shadow:0 0 40px rgba(91,128,230,.45)}
+  .arte .num small{font-family:'Poppins',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.42em;text-transform:uppercase;color:var(--texto-2);margin-bottom:10px;padding-left:.42em}
+  .arte .num strong{font-variant-numeric:lining-nums;font-feature-settings:'lnum' 1;font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(4.2rem,9vw,7.4rem);line-height:.95;letter-spacing:-.04em;color:var(--texto);text-shadow:0 0 40px rgba(91,128,230,.45)}
   .arte .num strong em{font-style:normal;color:var(--ouro)}
   .arte .num .tracinho{width:60px;height:1px;background:var(--ouro);margin:18px 0 14px}
-  .arte .num span{font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--ouro-claro)}
+  .arte .num span{font-family:'Poppins',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--ouro-claro)}
   .arte .ponto{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--ouro-claro);box-shadow:0 0 16px 3px rgba(232,214,168,.7)}
   .arte .p1{top:5%;left:50%;transform:translate(-50%,-50%)}
   .arte .p2{bottom:22%;right:3.5%}
@@ -113,7 +113,7 @@
   /* ===== FAIXA ===== */
   .faixa{border-top:1px solid var(--linha);border-bottom:1px solid var(--linha);background:var(--bg-2);overflow:hidden;padding:18px 0}
   .faixa .trilho{display:flex;gap:46px;width:max-content;animation:corre 38s linear infinite}
-  .faixa span{font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--texto-2);white-space:nowrap;display:flex;align-items:center;gap:46px}
+  .faixa span{font-family:'Poppins',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--texto-2);white-space:nowrap;display:flex;align-items:center;gap:46px}
   .faixa span::after{content:"✦";color:var(--ouro);letter-spacing:0;font-size:.7rem}
   @keyframes corre{to{transform:translateX(-50%)}}
 
@@ -121,33 +121,33 @@
   section{position:relative}
   .sec{padding:110px 0;overflow:hidden;isolation:isolate}
   .sec-head{text-align:center;max-width:760px;margin:0 auto 56px}
-  .sec-head h2{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(1.9rem,4vw,3rem);line-height:1.1;letter-spacing:-.02em;margin:18px 0 16px}
+  .sec-head h2{font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(1.9rem,4vw,3rem);line-height:1.15;letter-spacing:-.01em;margin:18px 0 16px}
   .sec-head p{color:var(--texto-2);font-weight:300;font-size:1.05rem}
   .sec-head p b{color:var(--texto);font-weight:500}
 
   /* combo */
   .combo .g1{width:700px;height:500px;left:50%;top:180px;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(12,31,79,.65),transparent 70%)}
   .lista-wrap{position:relative;z-index:1;max-width:860px;margin:0 auto;border:1px solid var(--linha);border-radius:18px;background:linear-gradient(180deg,rgba(10,13,20,.92),rgba(5,7,11,.92));overflow:hidden}
-  .grupo-tit{display:flex;justify-content:space-between;align-items:center;padding:22px 34px;border-bottom:1px solid var(--linha);font-family:'Montserrat',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--texto-3)}
+  .grupo-tit{display:flex;justify-content:space-between;align-items:center;padding:22px 34px;border-bottom:1px solid var(--linha);font-family:'Poppins',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--texto-3)}
   .grupo-tit + .item{border-top:0}
   .item{display:grid;grid-template-columns:52px 1fr auto;gap:20px;align-items:center;padding:26px 34px;border-top:1px solid var(--linha);transition:background .25s}
   .item:hover{background:rgba(91,128,230,.04)}
-  .item .n{font-feature-settings:'lnum' 1;font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.25rem;line-height:1;color:var(--ouro)}
-  .item h3{font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.08rem;letter-spacing:-.01em;margin-bottom:6px}
+  .item .n{font-feature-settings:'lnum' 1;font-family:'Poppins',sans-serif;font-weight:700;font-size:1.25rem;line-height:1;color:var(--ouro)}
+  .item h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:1.08rem;letter-spacing:-.01em;margin-bottom:6px}
   .item p{font-size:.86rem;color:var(--texto-2);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-  .mec{display:inline-flex;align-items:center;gap:6px;font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#a9bdf3;padding:4px 9px;border-radius:999px;border:1px solid rgba(91,128,230,.4);background:rgba(91,128,230,.08)}
-  .item .preco-item{font-family:'Montserrat',sans-serif;font-weight:600;font-size:1.02rem;color:var(--texto);white-space:nowrap;text-align:right}
+  .mec{display:inline-flex;align-items:center;gap:6px;font-family:'Poppins',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#a9bdf3;padding:4px 9px;border-radius:999px;border:1px solid rgba(91,128,230,.4);background:rgba(91,128,230,.08)}
+  .item .preco-item{font-family:'Poppins',sans-serif;font-weight:600;font-size:1.02rem;color:var(--texto);white-space:nowrap;text-align:right}
   .item .preco-item small{display:block;font-size:.66rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--texto-3);margin-bottom:2px}
   .bonus .n{color:var(--azul)}
 
   .oferta{position:relative;z-index:1;max-width:860px;margin:34px auto 0;border-radius:18px;padding:52px 40px;text-align:center;overflow:hidden;background:radial-gradient(ellipse at 50% 0%,rgba(22,52,128,.55),transparent 60%),linear-gradient(180deg,#0a1024,#05070c);border:1px solid rgba(201,169,107,.35)}
   .oferta::before{content:"";position:absolute;top:0;left:50%;width:60%;height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,var(--ouro-claro),transparent)}
-  .oferta h3{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(1.4rem,3vw,1.9rem);letter-spacing:-.01em;margin:14px 0 30px}
+  .oferta h3{font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(1.4rem,3vw,1.9rem);letter-spacing:-.01em;margin:14px 0 30px}
   .precos{display:grid;grid-template-columns:1fr 1px 1fr;gap:28px;align-items:center;max-width:560px;margin:0 auto 34px}
   .precos .div{height:70px;background:var(--linha-2)}
-  .precos small{display:block;font-family:'Montserrat',sans-serif;font-size:.66rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--texto-3);margin-bottom:8px}
-  .precos .de{font-family:'Montserrat',sans-serif;font-size:1.5rem;font-weight:500;color:var(--texto-2);text-decoration:line-through;text-decoration-color:rgba(241,154,154,.7);text-decoration-thickness:2px}
-  .precos .por{font-feature-settings:'lnum' 1;font-family:'Montserrat',sans-serif;font-weight:800;font-size:2.4rem;line-height:1;letter-spacing:-.02em;color:var(--ouro-claro)}
+  .precos small{display:block;font-family:'Poppins',sans-serif;font-size:.66rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--texto-3);margin-bottom:8px}
+  .precos .de{font-family:'Poppins',sans-serif;font-size:1.5rem;font-weight:500;color:var(--texto-2);text-decoration:line-through;text-decoration-color:rgba(241,154,154,.7);text-decoration-thickness:2px}
+  .precos .por{font-feature-settings:'lnum' 1;font-family:'Poppins',sans-serif;font-weight:800;font-size:2.4rem;line-height:1;letter-spacing:-.02em;color:var(--ouro-claro)}
   .oferta p{color:var(--texto-2);margin-bottom:26px;font-size:.98rem}
   .oferta p b{color:var(--texto);font-weight:500}
 
@@ -159,18 +159,29 @@
   .card:hover{border-color:rgba(201,169,107,.4);transform:translateY(-4px)}
   .card .ico{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;margin-bottom:22px;border:1px solid rgba(91,128,230,.4);background:radial-gradient(circle at 30% 30%,rgba(91,128,230,.35),rgba(12,31,79,.4))}
   .card .ico svg{width:22px;height:22px;stroke:var(--ouro-claro);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-  .card h3{font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.08rem;margin-bottom:10px}
+  .card h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:1.08rem;margin-bottom:10px}
   .card p{color:var(--texto-2);font-size:.92rem;font-weight:300}
 
-  /* sobre */
-  .sobre .container{display:grid;grid-template-columns:.95fr 1.05fr;gap:64px;align-items:center}
-  .sobre .g1{width:600px;height:600px;left:-200px;top:50%;transform:translateY(-50%);background:radial-gradient(circle,rgba(22,52,128,.45),transparent 70%)}
-  .sobre-img{position:relative;z-index:1;aspect-ratio:4/5;border-radius:18px;overflow:hidden;border:1px solid var(--linha-2);background:radial-gradient(circle at 50% 30%,#13275e,#05070c 70%);display:flex;align-items:center;justify-content:center}
-  .sobre-img img{width:100%;height:100%;object-fit:cover}
-  .sobre-img .ph{font-family:'Montserrat',sans-serif;font-weight:800;font-size:2.6rem;letter-spacing:.08em;color:rgba(232,214,168,.35)}
-  .sobre-txt{position:relative;z-index:1}
-  .sobre h2{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(1.8rem,3.4vw,2.6rem);line-height:1.1;letter-spacing:-.02em;margin:18px 0 24px}
-  .sobre p{color:var(--texto-2);font-weight:300;margin-bottom:16px}
+  /* coordenadoras */
+  .coord .g1{width:700px;height:700px;left:-250px;top:10%;background:radial-gradient(circle,rgba(22,52,128,.45),transparent 70%)}
+  .coord .g2{width:700px;height:700px;right:-250px;bottom:0;background:radial-gradient(circle,rgba(22,52,128,.4),transparent 70%)}
+  .prof{position:relative;z-index:1;display:grid;grid-template-columns:.85fr 1.15fr;gap:72px;align-items:center}
+  .prof + .prof{margin-top:110px}
+  .prof.inv{grid-template-columns:1.15fr .85fr}
+  .prof.inv .prof-foto{order:2}
+  .prof-foto{position:relative;isolation:isolate;max-width:440px;width:100%;justify-self:center}
+  .prof-foto::before{content:"";position:absolute;left:8%;right:-6%;top:14%;bottom:-5%;border:1px solid rgba(232,214,168,.35);border-radius:120px 0 120px 0;z-index:-1}
+  .prof.inv .prof-foto::before{left:-6%;right:8%}
+  .prof-foto::after{content:"";position:absolute;inset:20% 5% -10% 5%;background:radial-gradient(ellipse,rgba(22,52,128,.7),transparent 70%);filter:blur(40px);z-index:-2}
+  .prof-foto img{width:100%;height:auto;filter:drop-shadow(0 30px 50px rgba(0,0,0,.6))}
+  .prof-cargo{font-size:.72rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--ouro)}
+  .prof h3{font-weight:700;font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.15;letter-spacing:-.02em;margin:10px 0 20px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+  .chip{font-size:.78rem;font-weight:500;color:var(--texto);padding:7px 14px;border-radius:999px;border:1px solid rgba(232,214,168,.3);background:rgba(232,214,168,.06)}
+  .chip b{color:var(--ouro-claro);font-weight:700}
+  .prof p{color:#b9c0cc;font-weight:300;font-size:.97rem;margin-bottom:14px}
+  .prof p strong{color:var(--texto);font-weight:500}
+  .prof blockquote{margin-top:22px;padding:18px 22px;border-left:2px solid var(--ouro);background:linear-gradient(90deg,rgba(22,52,128,.35),transparent);border-radius:0 12px 12px 0;color:var(--texto);font-weight:400;font-size:1rem;line-height:1.55}
 
   /* cta final */
   .final{text-align:center}
@@ -198,13 +209,16 @@
   /* ===== RESPONSIVO ===== */
   @media (max-width:960px){
     .hero{padding:44px 0 80px}
-    .hero .container,.sobre .container{grid-template-columns:1fr;gap:40px}
+    .hero .container{grid-template-columns:1fr;gap:40px}
+    .prof,.prof.inv{grid-template-columns:1fr;gap:36px}
+    .prof.inv .prof-foto{order:0}
+    .prof-foto{max-width:340px}
+    .prof + .prof{margin-top:80px}
     .arte{max-width:340px}
     .hero .logo-bf{margin:18px 0 26px;max-width:300px}
     .form-card{max-width:none}
     .cards{grid-template-columns:1fr}
     .sec{padding:80px 0}
-    .sobre-img{aspect-ratio:4/3}
   }
   @media (max-width:600px){
     .container{padding:0 18px}
@@ -396,19 +410,50 @@ src="https://www.facebook.com/tr?id=1456216939376794&ev=PageView&noscript=1" alt
   </div>
 </section>
 
-<!-- ===== SOBRE ===== -->
-<section class="sec sobre">
-  <div class="glow g1"></div>
+<!-- ===== COORDENADORAS ===== -->
+<section class="sec coord">
+  <div class="glow g1"></div><div class="glow g2"></div>
   <div class="container">
-    <div class="sobre-img rev">
-      <img src="imagens/sobre.jpg" alt="IBPROF" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'ph',textContent:'IBPROF'}))">
+    <div class="sec-head rev">
+      <span class="eyebrow centro">Quem vai te ensinar</span>
+      <h2>As coordenadoras da <span class="serif" style="white-space:nowrap">Pós-graduação</span></h2>
+      <p>Duas professoras que vivem a Educação Musical na prática, em sala de aula, há décadas.</p>
     </div>
-    <div class="sobre-txt rev">
-      <span class="eyebrow">Quem somos</span>
-      <h2>Instituto Brasileiro de <span class="serif">Professores</span></h2>
-      <p>[TEXTO SOBRE O IBPROF: história, tempo de mercado, número de alunos formados e diferenciais.]</p>
-      <p>[TEXTO SOBRE OS PROFESSORES/COORDENAÇÃO: formação, experiência e resultados.]</p>
-      <p>[TEXTO SOBRE A PROPOSTA: por que a formação do IBPROF transforma a prática do professor de música.]</p>
+
+    <div class="prof rev">
+      <div class="prof-foto"><img src="imagens/bianca.webp" alt="Prof.ª Dra. Bianca Ribeiro" width="640" height="733" loading="lazy"></div>
+      <div>
+        <span class="prof-cargo">Coordenadora</span>
+        <h3>Prof.ª Dra. Bianca Ribeiro</h3>
+        <div class="chips">
+          <span class="chip"><b>Doutora</b> em Teoria e Análise Musical · USP</span>
+          <span class="chip"><b>Mestre</b> em Rítmica · UDESC</span>
+          <span class="chip"><b>+20 anos</b> de docência</span>
+        </div>
+        <p>Música está em minha vida desde criança e há mais de 20 anos me tornei professora de piano e iniciação musical. Eu, meu marido e nossas duas filhas vivemos música todos os dias.</p>
+        <p>Estudei piano popular em Tatuí-SP, fiz Bacharelado em piano em Florianópolis (UDESC), onde segui para o Mestrado em Rítmica. Hoje sou <strong>Doutora em Teoria e Análise Musical na USP – SP</strong>.</p>
+        <p>Sou apaixonada por artes e toda minha carreira mostra isso. Atualmente, sou professora de piano e iniciação musical na Intermezzo Escola de Música, fui sócia-proprietária da Academia de Música Moderna em Florianópolis por 10 anos e já trabalhei como designer de Scrapbooking e designer de marcas brasileiras (Yummy’s e Arte.1) e estrangeiras (ScrapHaus e 7dotStudio).</p>
+        <p>Como professora de música busco me conectar cada vez mais com meus alunos através de aulas criativas e inspiradoras. A pandemia veio e tive que reinventar o meu método de ensino, onde desenvolvi jogos em PowerPoint para ensinar de maneira lúdica e descontraída.</p>
+        <blockquote>Minha missão hoje é ajudar outros profissionais da música a enriquecerem suas aulas com materiais, jogos e métodos criativos de ensino.</blockquote>
+      </div>
+    </div>
+
+    <div class="prof inv rev">
+      <div class="prof-foto"><img src="imagens/cintya.webp" alt="Prof.ª Ms. Cintya Soares" width="647" height="693" loading="lazy"></div>
+      <div>
+        <span class="prof-cargo">Coordenadora</span>
+        <h3>Prof.ª Ms. Cintya Soares</h3>
+        <div class="chips">
+          <span class="chip"><b>Mestre</b> em Educação</span>
+          <span class="chip"><b>30 anos</b> como professora de música</span>
+          <span class="chip"><b>+25.000</b> formados</span>
+        </div>
+        <p>Mestre em Educação, Pós-graduada em Música, Fonoaudióloga e Pianista. Especialista no Método Atitude Emocional.</p>
+        <p>Sou apaixonada pela Educação Musical. Atuei como Professora de Música por 30 anos. Com a experiência em sala de aula, desenvolvi minha própria metodologia de Ensino em Educação Musical.</p>
+        <p>Trabalhei em escolas regulares, escolas de música, toquei em grupos musicais e fui regente de corais. Trabalhei com diversas faixas etárias: desde bebês até a melhor idade.</p>
+        <p>Sou criadora do Curso de Extensão Universitária <strong>Método Criança e Música®</strong> e da <strong>Pós-Graduação Song Master</strong>. Ambos possuem reconhecimento pelo Ministério da Educação através da FEX Educação. Participei de inúmeros Festivais, Cursos, Workshops empresariais e musicais dentro e fora do país. Já passaram por mim <strong>mais de 25.000 professores, alunos e empresas</strong> formados pelo Método Criança e Música® e por minha Metodologia de Negócios.</p>
+        <blockquote>A Educação Musical é um meio pelo qual podemos proporcionar um maior desenvolvimento neurológico, para estimular a inteligência de uma maneira geral, ampliar a linguagem oral e corporal, a fala e a audição, sendo uma prática agradável, que aumenta a autoestima e autoconhecimento através da linguagem universal: a Música.</blockquote>
+      </div>
     </div>
   </div>
 </section>
