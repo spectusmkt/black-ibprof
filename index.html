@@ -480,7 +480,7 @@ src="https://www.facebook.com/tr?id=1456216939376794&ev=PageView&noscript=1" alt
 var CONFIG = {
   revelacao: '2026-11-11T19:30:00-03:00',   // data/hora da revelação da oferta (horário de Brasília)
   webhook: 'https://script.google.com/macros/s/AKfycbxUFlqZDt4xpybKfajcJvFlzwtoA9LC3w4f_2930LIunJ2d-v_J_Jco0gjI_3ZwoJtq/exec', // planilha de leads (Google Sheets) — ver integracoes/
-  grupoVip: ''                               // link do grupo VIP (WhatsApp) para onde o lead é enviado
+  paginaObrigado: 'obrigado.html'            // página para onde a pessoa vai depois de se cadastrar (lá fica o botão do WhatsApp)
 };
 
 (function(){
@@ -560,8 +560,7 @@ var CONFIG = {
         : Promise.resolve();
       var limite = new Promise(function(r){setTimeout(r,2500);});
       Promise.race([envio,limite]).then(function(){
-        if(CONFIG.grupoVip){location.href=CONFIG.grupoVip;}
-        else{btn.textContent='Inscrição confirmada!';}
+        location.href = CONFIG.paginaObrigado + location.search;
       });
     });
   });
