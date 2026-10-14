@@ -60,11 +60,12 @@
   .logo-bf{width:100%;max-width:360px;height:auto;aspect-ratio:1905/394}
 
   /* ===== HERO ===== */
-  .hero{position:relative;padding:72px 0 110px;overflow:hidden;isolation:isolate}
+  .hero{position:relative;padding:72px 0 120px;min-height:760px;overflow:hidden;isolation:isolate}
   .hero .g1{width:720px;height:720px;right:-160px;top:-120px;background:radial-gradient(circle,var(--navy-glow),transparent 70%)}
   .hero .g2{width:520px;height:520px;left:-220px;bottom:-200px;background:radial-gradient(circle,rgba(12,31,79,.6),transparent 70%)}
   .hero::before{content:"";position:absolute;inset:0;z-index:0;background-image:linear-gradient(var(--linha) 1px,transparent 1px),linear-gradient(90deg,var(--linha) 1px,transparent 1px);background-size:80px 80px;-webkit-mask-image:radial-gradient(ellipse at 70% 40%,#000 0%,transparent 65%);mask-image:radial-gradient(ellipse at 70% 40%,#000 0%,transparent 65%);opacity:.5}
-  .hero .container{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .hero .container{position:relative;z-index:1}
+  .hero-txt{max-width:560px}
   .hero .logo-bf{margin:26px 0 34px}
   .hero h1{font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(2rem,4.2vw,3.25rem);line-height:1.1;letter-spacing:-.01em;margin-bottom:20px}
   .hero .sub{color:var(--texto-2);font-size:1.05rem;font-weight:300;max-width:520px;margin-bottom:32px}
@@ -92,23 +93,13 @@
   .confianca span{display:flex;align-items:center;gap:8px}
   .confianca span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--ouro);box-shadow:0 0 10px var(--ouro)}
 
-  /* arte 11.11 */
-  .arte{position:relative;aspect-ratio:1/1;max-width:500px;width:100%;justify-self:center}
-  .arte .orb{position:absolute;inset:8%;border-radius:50%;background:radial-gradient(circle at 50% 38%,#1a3a8a 0%,#0c1f4f 38%,#050a18 70%,transparent 72%);box-shadow:0 0 120px 10px rgba(22,52,128,.45)}
-  .arte .anel{position:absolute;border-radius:50%;border:1px solid rgba(201,169,107,.35)}
-  .arte .a1{inset:2%}
-  .arte .a2{inset:-4%;border-color:rgba(91,128,230,.18);border-style:dashed;animation:gira 80s linear infinite}
-  .arte .a3{inset:16%;border-color:rgba(255,255,255,.07)}
-  @keyframes gira{to{transform:rotate(360deg)}}
-  .arte .num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-  .arte .num small{font-family:'Poppins',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.42em;text-transform:uppercase;color:var(--texto-2);margin-bottom:10px;padding-left:.42em}
-  .arte .num strong{font-variant-numeric:lining-nums;font-feature-settings:'lnum' 1;font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(4.2rem,9vw,7.4rem);line-height:.95;letter-spacing:-.04em;color:var(--texto);text-shadow:0 0 40px rgba(91,128,230,.45)}
-  .arte .num strong em{font-style:normal;color:var(--ouro)}
-  .arte .num .tracinho{width:60px;height:1px;background:var(--ouro);margin:18px 0 14px}
-  .arte .num span{font-family:'Poppins',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--ouro-claro)}
-  .arte .ponto{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--ouro-claro);box-shadow:0 0 16px 3px rgba(232,214,168,.7)}
-  .arte .p1{top:5%;left:50%;transform:translate(-50%,-50%)}
-  .arte .p2{bottom:22%;right:3.5%}
+  /* fundo com as coordenadoras */
+  .hero-bg{position:absolute;top:0;right:0;height:min(780px,100%);width:64%;z-index:0}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:60% 0%}
+  .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--bg) 0%,rgba(3,4,6,.85) 18%,rgba(3,4,6,0) 52%),linear-gradient(0deg,var(--bg) 0%,rgba(3,4,6,0) 16%),linear-gradient(180deg,rgba(3,4,6,.55) 0%,rgba(3,4,6,0) 22%)}
+  .hero-assin{position:absolute;right:max(24px,calc((100vw - 1160px)/2 + 24px));top:690px;z-index:2;text-align:right}
+  .hero-assin small{display:block;font-size:.66rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--ouro);margin-bottom:6px}
+  .hero-assin span{display:block;font-size:.92rem;font-weight:500;color:var(--texto)}
 
   /* ===== FAIXA ===== */
   .faixa{border-top:1px solid var(--linha);border-bottom:1px solid var(--linha);background:var(--bg-2);overflow:hidden;padding:18px 0}
@@ -170,8 +161,6 @@
   .prof.inv{grid-template-columns:1.15fr .85fr}
   .prof.inv .prof-foto{order:2}
   .prof-foto{position:relative;isolation:isolate;max-width:440px;width:100%;justify-self:center}
-  .prof-foto::before{content:"";position:absolute;left:8%;right:-6%;top:14%;bottom:-5%;border:1px solid rgba(232,214,168,.35);border-radius:120px 0 120px 0;z-index:-1}
-  .prof.inv .prof-foto::before{left:-6%;right:8%}
   .prof-foto::after{content:"";position:absolute;inset:20% 5% -10% 5%;background:radial-gradient(ellipse,rgba(22,52,128,.7),transparent 70%);filter:blur(40px);z-index:-2}
   .prof-foto img{width:100%;height:auto;filter:drop-shadow(0 30px 50px rgba(0,0,0,.6))}
   .prof-cargo{font-size:.72rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--ouro)}
@@ -204,17 +193,23 @@
   /* animação de entrada */
   .rev{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
   .rev.on{opacity:1;transform:none}
-  @media (prefers-reduced-motion:reduce){.rev{opacity:1;transform:none;transition:none}.btn::after,.faixa .trilho,.arte .a2{animation:none}}
+  @media (prefers-reduced-motion:reduce){.rev{opacity:1;transform:none;transition:none}.btn::after,.faixa .trilho{animation:none}}
 
   /* ===== RESPONSIVO ===== */
+  @media (max-width:1100px){
+    .hero{padding-top:0;min-height:0}
+    .hero-bg{position:relative;width:auto;height:min(54vw,560px);margin:0}
+    .hero-bg img{object-position:62% 100%}
+    .hero-bg::after{background:linear-gradient(0deg,var(--bg) 0%,rgba(3,4,6,0) 22%),linear-gradient(180deg,rgba(3,4,6,.5) 0%,rgba(3,4,6,0) 25%)}
+    .hero-assin{display:none}
+    .hero-txt{max-width:640px;margin:18px auto 0}
+  }
   @media (max-width:960px){
-    .hero{padding:44px 0 80px}
-    .hero .container{grid-template-columns:1fr;gap:40px}
+    .hero{padding:0 0 80px}
     .prof,.prof.inv{grid-template-columns:1fr;gap:36px}
     .prof.inv .prof-foto{order:0}
     .prof-foto{max-width:340px}
     .prof + .prof{margin-top:80px}
-    .arte{max-width:340px}
     .hero .logo-bf{margin:18px 0 26px;max-width:300px}
     .form-card{max-width:none}
     .cards{grid-template-columns:1fr}
@@ -225,11 +220,11 @@
     .barra .container{gap:10px 14px}
     .barra .rot{font-size:.6rem;letter-spacing:.16em}
     .relogio b{font-size:1.05rem}
-    .arte{max-width:230px}
-    .hero{padding-top:28px}
-    .arte .num strong{font-size:4.2rem}
-    .arte .num span{font-size:1.05rem}
-    .arte .num small{font-size:.6rem}
+    .hero-bg{height:300px}
+    .hero-bg img{object-position:62% 0%}
+    .hero-assin{display:none}
+    .hero-txt{margin-top:18px}
+    .hero-assin span{font-size:.82rem}
     .hero h1{font-size:2rem}
     .form-card{padding:20px}
     .btn{width:100%;padding:18px 16px;font-size:.8rem;letter-spacing:.1em}
@@ -283,8 +278,10 @@ src="https://www.facebook.com/tr?id=1456216939376794&ev=PageView&noscript=1" alt
 <!-- ===== HERO ===== -->
 <header class="hero">
   <div class="glow g1"></div><div class="glow g2"></div>
+  <div class="hero-bg"><img src="imagens/hero-coordenadoras.jpg" alt="Prof.ª Dra. Bianca Ribeiro e Prof.ª Ms. Cintya Soares" width="1360" height="850"></div>
+  <div class="hero-assin"><small>Coordenação</small><span>Prof.ª Dra. Bianca Ribeiro<br>Prof.ª Ms. Cintya Soares</span></div>
   <div class="container">
-    <div>
+    <div class="hero-txt">
       <span class="eyebrow"><span class="js-data-curta">11/11</span> · às <span class="js-hora-txt">19h30</span></span>
       <img class="logo-bf" src="imagens/logo-black-ibprof.png" alt="Black Friday IBPROF" width="1200" height="248">
       <h1>A maior Black Friday da <span class="serif">Educação Musical</span> do Brasil.</h1>
@@ -304,19 +301,6 @@ src="https://www.facebook.com/tr?id=1456216939376794&ev=PageView&noscript=1" alt
       <div class="confianca"><span>3 certificados MEC</span><span>Condição exclusiva do Grupo VIP</span></div>
     </div>
 
-    <div class="arte" aria-hidden="true">
-      <div class="orb"></div>
-      <div class="anel a2"></div>
-      <div class="anel a1"></div>
-      <div class="anel a3"></div>
-      <div class="ponto p1"></div><div class="ponto p2"></div>
-      <div class="num">
-        <small>Black Friday</small>
-        <strong>11<em>.</em>11</strong>
-        <div class="tracinho"></div>
-        <span>uma condição que não se repete</span>
-      </div>
-    </div>
   </div>
 </header>
 
@@ -421,7 +405,7 @@ src="https://www.facebook.com/tr?id=1456216939376794&ev=PageView&noscript=1" alt
     </div>
 
     <div class="prof rev">
-      <div class="prof-foto"><img src="imagens/bianca.webp" alt="Prof.ª Dra. Bianca Ribeiro" width="640" height="733" loading="lazy"></div>
+      <div class="prof-foto"><img src="imagens/bianca.webp" alt="Prof.ª Dra. Bianca Ribeiro" width="937" height="1250" loading="lazy"></div>
       <div>
         <span class="prof-cargo">Coordenadora</span>
         <h3>Prof.ª Dra. Bianca Ribeiro</h3>
@@ -439,7 +423,7 @@ src="https://www.facebook.com/tr?id=1456216939376794&ev=PageView&noscript=1" alt
     </div>
 
     <div class="prof inv rev">
-      <div class="prof-foto"><img src="imagens/cintya.webp" alt="Prof.ª Ms. Cintya Soares" width="647" height="693" loading="lazy"></div>
+      <div class="prof-foto"><img src="imagens/cintya.webp" alt="Prof.ª Ms. Cintya Soares" width="936" height="1261" loading="lazy"></div>
       <div>
         <span class="prof-cargo">Coordenadora</span>
         <h3>Prof.ª Ms. Cintya Soares</h3>
@@ -542,7 +526,8 @@ var CONFIG = {
   // CTA fixo no celular: aparece depois do formulário do topo e some perto do formulário final
   var fixo=document.querySelector('.cta-fixo'), final=document.querySelector('.final');
   function ctaFixo(){
-    var passouTopo = primeiro.getBoundingClientRect().bottom < 0;
+    var r = primeiro.getBoundingClientRect();
+    var passouTopo = r.bottom < 0 || r.top > window.innerHeight - 80;
     var chegouFinal = final.getBoundingClientRect().top < window.innerHeight;
     fixo.classList.toggle('on', passouTopo && !chegouFinal);
   }
