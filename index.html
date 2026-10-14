@@ -94,10 +94,10 @@
   .confianca span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--ouro);box-shadow:0 0 10px var(--ouro)}
 
   /* fundo com as coordenadoras */
-  .hero-bg{position:absolute;top:0;right:0;height:min(780px,100%);width:64%;z-index:0}
-  .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:60% 0%}
-  .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--bg) 0%,rgba(3,4,6,.85) 18%,rgba(3,4,6,0) 52%),linear-gradient(0deg,var(--bg) 0%,rgba(3,4,6,0) 16%),linear-gradient(180deg,rgba(3,4,6,.55) 0%,rgba(3,4,6,0) 22%)}
-  .hero-assin{position:absolute;right:max(24px,calc((100vw - 1160px)/2 + 24px));top:690px;z-index:2;text-align:right}
+  .hero-bg{position:absolute;top:0;right:0;bottom:0;width:80%;z-index:0}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:46% 100%}
+  .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--bg) 0%,rgba(3,4,6,.85) 22%,rgba(3,4,6,.35) 40%,rgba(3,4,6,0) 55%),linear-gradient(180deg,rgba(3,4,6,.55) 0%,rgba(3,4,6,0) 18%)}
+  .hero-assin{position:absolute;right:max(24px,calc((100vw - 1160px)/2 + 24px));bottom:36px;z-index:2;text-align:right}
   .hero-assin small{display:block;font-size:.66rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--ouro);margin-bottom:6px}
   .hero-assin span{display:block;font-size:.92rem;font-weight:500;color:var(--texto)}
 
@@ -197,15 +197,15 @@
 
   /* ===== RESPONSIVO ===== */
   @media (max-width:1100px){
-    .hero{padding-top:0;min-height:0}
-    .hero-bg{position:relative;width:auto;height:min(54vw,560px);margin:0}
-    .hero-bg img{object-position:62% 100%}
-    .hero-bg::after{background:linear-gradient(0deg,var(--bg) 0%,rgba(3,4,6,0) 22%),linear-gradient(180deg,rgba(3,4,6,.5) 0%,rgba(3,4,6,0) 25%)}
+    .hero{padding:56px 0 90px;min-height:0}
+    .hero-bg{width:100%;opacity:.42}
+    .hero-bg img{object-position:58% 12%}
+    .hero-bg::after{background:linear-gradient(180deg,rgba(3,4,6,.35) 0%,rgba(3,4,6,0) 30%,rgba(3,4,6,.6) 75%,var(--bg) 100%)}
     .hero-assin{display:none}
-    .hero-txt{max-width:640px;margin:18px auto 0}
+    .hero-txt{max-width:640px;margin:0 auto}
   }
   @media (max-width:960px){
-    .hero{padding:0 0 80px}
+    .hero{padding:44px 0 80px}
     .prof,.prof.inv{grid-template-columns:1fr;gap:36px}
     .prof.inv .prof-foto{order:0}
     .prof-foto{max-width:340px}
@@ -220,11 +220,7 @@
     .barra .container{gap:10px 14px}
     .barra .rot{font-size:.6rem;letter-spacing:.16em}
     .relogio b{font-size:1.05rem}
-    .hero-bg{height:300px}
-    .hero-bg img{object-position:62% 0%}
-    .hero-assin{display:none}
-    .hero-txt{margin-top:18px}
-    .hero-assin span{font-size:.82rem}
+    .hero-bg img{object-position:60% 6%}
     .hero h1{font-size:2rem}
     .form-card{padding:20px}
     .btn{width:100%;padding:18px 16px;font-size:.8rem;letter-spacing:.1em}
@@ -483,7 +479,7 @@ src="https://www.facebook.com/tr?id=1456216939376794&ev=PageView&noscript=1" alt
    Ajuste aqui: data da revelação, para onde vão os leads e o link do grupo. */
 var CONFIG = {
   revelacao: '2026-11-11T19:30:00-03:00',   // data/hora da revelação da oferta (horário de Brasília)
-  webhook: '',                               // URL que recebe os leads (ActiveCampaign, RD, n8n, Make, Planilha...)
+  webhook: 'https://script.google.com/macros/s/AKfycbxUFlqZDt4xpybKfajcJvFlzwtoA9LC3w4f_2930LIunJ2d-v_J_Jco0gjI_3ZwoJtq/exec', // planilha de leads (Google Sheets) — ver integracoes/
   grupoVip: ''                               // link do grupo VIP (WhatsApp) para onde o lead é enviado
 };
 
