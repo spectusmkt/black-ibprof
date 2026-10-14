@@ -77,7 +77,7 @@
   .form-card .form-sub{font-size:.9rem;color:#c3c9d6;margin-bottom:18px}
   .form-card .form-sub b{color:var(--ouro-claro);font-weight:600}
   form.cap{display:grid;gap:12px}
-  form.cap input[type=email],form.cap input[type=tel]{width:100%;padding:16px 18px;border-radius:10px;border:2px solid transparent;background:#fff;color:#0b0d12;font:inherit;font-size:1rem;font-weight:500;transition:border-color .2s,background .2s}
+  form.cap input[type=text],form.cap input[type=email],form.cap input[type=tel]{width:100%;padding:16px 18px;border-radius:10px;border:2px solid transparent;background:#fff;color:#0b0d12;font:inherit;font-size:1rem;font-weight:500;transition:border-color .2s,background .2s}
   form.cap input::placeholder{color:#7a808c;font-weight:400}
   form.cap input:focus{outline:none;border-color:var(--ouro);box-shadow:0 0 0 4px rgba(201,169,107,.25)}
   .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;cursor:pointer;text-decoration:none;font-family:'Poppins',sans-serif;font-weight:700;font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;border-radius:10px;padding:19px 26px;color:#14100a;background:linear-gradient(180deg,#ecdcb2,var(--ouro) 70%);box-shadow:0 14px 40px -10px rgba(201,169,107,.55),inset 0 1px 0 rgba(255,255,255,.5);transition:transform .2s,box-shadow .2s;overflow:hidden}
@@ -86,8 +86,6 @@
   .btn:hover{transform:translateY(-2px);box-shadow:0 20px 50px -10px rgba(201,169,107,.7),inset 0 1px 0 rgba(255,255,255,.5)}
   .btn[disabled]{opacity:.75;cursor:wait;transform:none}
   .btn .seta{font-size:1.1em;letter-spacing:0}
-  .aceite{display:flex;gap:10px;align-items:flex-start;font-size:.74rem;color:#aab1bf;line-height:1.45}
-  .aceite input{margin-top:2px;accent-color:var(--ouro);width:14px;height:14px;flex:none}
   .msg-erro{color:#f19a9a;font-size:.8rem;min-height:1em}
   .confianca{display:flex;gap:22px;flex-wrap:wrap;margin-top:22px;font-size:.78rem;color:var(--texto-2)}
   .confianca span{display:flex;align-items:center;gap:8px}
@@ -302,10 +300,10 @@ src="https://www.facebook.com/tr?id=1456216939376794&ev=PageView&noscript=1" alt
         <p class="form-tit">Entre no Grupo VIP</p>
         <p class="form-sub">Veja a oferta <b>antes de todo mundo</b> <span class="quebra">no dia <span class="js-data-curta">08/11</span>.</span></p>
         <form class="cap" novalidate>
+          <input type="text" name="nome" placeholder="Seu nome" autocomplete="name" required>
           <input type="email" name="email" placeholder="Seu melhor e-mail" autocomplete="email" required>
           <input type="tel" name="whatsapp" placeholder="Seu WhatsApp com DDD" autocomplete="tel" inputmode="tel" required>
           <button class="btn" type="submit">Quero entrar no Grupo VIP <span class="seta">→</span></button>
-          <label class="aceite"><input type="checkbox" name="aceite" checked required> Concordo em receber as informações sobre a Black Friday IBPROF e eventos futuros.</label>
           <p class="msg-erro" role="alert"></p>
         </form>
       </div>
@@ -465,10 +463,10 @@ src="https://www.facebook.com/tr?id=1456216939376794&ev=PageView&noscript=1" alt
       </div>
       <div class="form-card">
         <form class="cap" novalidate>
+          <input type="text" name="nome" placeholder="Seu nome" autocomplete="name" required>
           <input type="email" name="email" placeholder="Seu melhor e-mail" autocomplete="email" required>
           <input type="tel" name="whatsapp" placeholder="Seu WhatsApp com DDD" autocomplete="tel" inputmode="tel" required>
           <button class="btn" type="submit">Quero entrar no Grupo VIP <span class="seta">→</span></button>
-          <label class="aceite"><input type="checkbox" name="aceite" checked required> Concordo em receber as informações sobre a Black Friday IBPROF e eventos futuros.</label>
           <p class="msg-erro" role="alert"></p>
         </form>
       </div>
@@ -524,7 +522,7 @@ var CONFIG = {
     a.addEventListener('click',function(e){
       e.preventDefault();
       primeiro.scrollIntoView({behavior:'smooth',block:'center'});
-      setTimeout(function(){primeiro.querySelector('input[type=email]').focus({preventScroll:true});},600);
+      setTimeout(function(){primeiro.querySelector('input[name=nome]').focus({preventScroll:true});},600);
     });
   });
 
@@ -558,16 +556,16 @@ var CONFIG = {
     });
     form.addEventListener('submit',function(e){
       e.preventDefault();
-      var email=form.email.value.trim(), fone=tel.value.replace(/\D/g,'');
+      var nome=form.nome.value.trim().replace(/\s+/g,' '), email=form.email.value.trim(), fone=tel.value.replace(/\D/g,'');
+      if(nome.length<2){erro.textContent='Digite seu nome.';form.nome.focus();return;}
       if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){erro.textContent='Digite um e-mail válido.';form.email.focus();return;}
       if(fone.length<10){erro.textContent='Digite seu WhatsApp com DDD.';tel.focus();return;}
-      if(!form.aceite.checked){erro.textContent='Marque a caixa de ciência para continuar.';return;}
       erro.textContent='';
       btn.disabled=true; btn.textContent='Enviando...';
 
       var params=new URLSearchParams(location.search), utm={};
       ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k){if(params.get(k))utm[k]=params.get(k);});
-      var lead=Object.assign({email:email,whatsapp:'55'+fone,pagina:location.href,data:new Date().toISOString()},utm);
+      var lead=Object.assign({nome:nome,email:email,whatsapp:'55'+fone,pagina:location.href,data:new Date().toISOString()},utm);
 
       if(window.fbq) window.fbq('track','Lead',{content_name:'Black Friday IBPROF'});
 

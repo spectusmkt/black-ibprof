@@ -6,7 +6,7 @@
  */
 
 var ABA = 'Leads';
-var COLUNAS = ['Data/hora', 'E-mail', 'WhatsApp', 'Já cadastrado?', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'Página'];
+var COLUNAS = ['Data/hora', 'Nome', 'E-mail', 'WhatsApp', 'Já cadastrado?', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'Página'];
 
 function doPost(e) {
   var trava = LockService.getScriptLock();
@@ -21,6 +21,7 @@ function doPost(e) {
 
     aba.appendRow([
       Utilities.formatDate(new Date(), 'America/Sao_Paulo', 'dd/MM/yyyy HH:mm:ss'),
+      String(lead.nome || '').trim(),
       email,
       whatsapp,
       jaExiste_(aba, email, whatsapp) ? 'Sim' : '',
@@ -47,11 +48,12 @@ function doGet() {
 function pegarAba_() {
   var planilha = SpreadsheetApp.getActiveSpreadsheet();
   var aba = planilha.getSheetByName(ABA) || planilha.insertSheet(ABA);
-  if (aba.getLastRow() === 0) {
-    aba.appendRow(COLUNAS);
+  var cabecalho = aba.getLastRow() ? aba.getRange(1, 1, 1, COLUNAS.length).getValues()[0].join('|') : '';
+  if (cabecalho !== COLUNAS.join('|')) { // cria ou atualiza o cabeçalho (ex.: quando a coluna Nome foi adicionada)
+    if (aba.getLastRow() === 0) aba.appendRow(COLUNAS); else aba.getRange(1, 1, 1, COLUNAS.length).setValues([COLUNAS]);
     aba.getRange(1, 1, 1, COLUNAS.length).setFontWeight('bold').setBackground('#0c1f4f').setFontColor('#ffffff');
     aba.setFrozenRows(1);
-    aba.getRange('C:C').setNumberFormat('@'); // WhatsApp como texto (não vira número científico)
+    aba.getRange('D:D').setNumberFormat('@'); // WhatsApp como texto (não vira número científico)
   }
   return aba;
 }
@@ -59,7 +61,7 @@ function pegarAba_() {
 function jaExiste_(aba, email, whatsapp) {
   var ultima = aba.getLastRow();
   if (ultima < 2) return false;
-  var dados = aba.getRange(2, 2, ultima - 1, 2).getValues(); // colunas E-mail e WhatsApp
+  var dados = aba.getRange(2, 3, ultima - 1, 2).getValues(); // colunas E-mail e WhatsApp
   for (var i = 0; i < dados.length; i++) {
     if ((email && String(dados[i][0]).toLowerCase() === email) ||
         (whatsapp && String(dados[i][1]).replace(/\D/g, '') === whatsapp)) return true;
