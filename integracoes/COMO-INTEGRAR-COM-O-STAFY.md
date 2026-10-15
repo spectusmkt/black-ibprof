@@ -228,9 +228,19 @@ sai da máquina.
   ocultos" com os 28 itens, desligar grava sozinho, o envio de verdade pela página pública (41 de 41).
 - **A migração** que cria o formulário passou no ensaio contra a produção (nada gravado).
 
-**O que NÃO foi provado:** o envio para o Stafy de produção (depende de a migração 0305 ser aplicada e
-de a página ser publicada) e o Lead chegando à Meta de verdade (depende de o token da conexão do IBPROF
-ter acesso a este pixel).
+**Em produção (15/10/2026):** a migração 0305 está aplicada e o formulário `black-ibprof-grupo-vip`
+está **ativo** no negócio `ibprof`. Um envio vazio vindo de `https://spectusmkt.github.io` recebe **422
+`email_required`** com `Access-Control-Allow-Origin: *`: o Stafy acha o formulário, valida e deixa a página
+ler a resposta. O `porteiro.js` responde 200. A página foi publicada na `main` (GitHub Pages).
+
+⚠️ **Conferir no Stafy** (Formulários › Black IBPROF — Grupo VIP): em 15/10 às 10:05 o formulário foi
+editado na tela. O **"Lead na Meta" ficou desligado** (o pixel e o token continuam escolhidos) e ganhou um
+**destino para a Hotmart**. A página continua indo para o `obrigado.html`, porque `usarDestinoDoStafy` é
+`false`. Com o Lead desligado, o Lead pelo servidor não sai; o Pixel da página continua.
+
+**O que NÃO foi provado:** um cadastro de verdade chegando ao Stafy de produção (nenhum foi feito, para
+não criar contato nem Lead de mentira) e o Lead chegando à Meta de verdade (depende de ligar o "Lead na
+Meta" e de o token da conexão do IBPROF ter acesso a este pixel).
 
 ---
 
