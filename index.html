@@ -498,18 +498,16 @@ src="https://www.facebook.com/tr?id=1456216939376794&ev=PageView&noscript=1" alt
 var CONFIG = {
   revelacao: '2026-11-08T09:00:00-03:00',   // data/hora da revelação da oferta (horário de Brasília)
 
-  /* Formulário do Stafy que recebe os cadastros — ver integracoes/COMO-INTEGRAR-COM-O-STAFY.md.
-     TROQUE `endereco` pelo do seu formulário: no Stafy, Editar formulário › passo 4 "Onde publicar" ›
-     "Já tenho um formulário na minha página" › "Copiar o endereço de integração".
-     Modelo: https://www.stafy.app/api/forms/<formulario>/submit?negocio=<negocio>
-     Deixe '' para desligar o envio ao Stafy. */
+  /* O formulário do Stafy que recebe os cadastros — a captura de leads do Stafy, negócio IBPROF.
+     É o formulário "Black IBPROF — Grupo VIP" (criado no Stafy pela migração 0305). O endereço sai do
+     Stafy: Editar formulário › passo "Onde publicar" › "Já tenho um formulário na minha página".
+     Ver integracoes/COMO-INTEGRAR-COM-O-STAFY.md. Os cadastros vão SÓ para o Stafy (sem planilha). */
   stafy: {
-    endereco: 'https://www.stafy.app/api/forms/black-ibprof-grupo-vip-0000/submit?negocio=ibprof',
-    usarDestinoDoStafy: false,  // true = depois do envio, vai para o destino do passo 2 do Stafy ("Para onde vai depois"), se houver
+    endereco: 'https://www.stafy.app/api/forms/black-ibprof-grupo-vip/submit?negocio=ibprof',
+    usarDestinoDoStafy: false,  // true = depois do envio, vai para o destino do passo "Para onde vai depois" do Stafy, se houver
     prazoMs: 8000               // quanto esperar a resposta do Stafy antes de seguir para o obrigado
   },
 
-  webhook: 'https://script.google.com/macros/s/AKfycbxUFlqZDt4xpybKfajcJvFlzwtoA9LC3w4f_2930LIunJ2d-v_J_Jco0gjI_3ZwoJtq/exec', // cópia na planilha (Google Sheets) — ver integracoes/; '' desliga
   paginaObrigado: 'obrigado.html'            // página para onde a pessoa vai depois de se cadastrar (lá fica o botão do WhatsApp)
 };
 
@@ -567,7 +565,6 @@ var CONFIG = {
       ? destinoDoStafy
       : CONFIG.paginaObrigado + location.search;
   }
-  function espera(ms){ return new Promise(function(r){ setTimeout(r,ms); }); }
 
   cada('form.cap',function(form){
     var tel = form.whatsapp, erro = form.querySelector('.msg-erro'), btn = form.querySelector('button');
@@ -594,30 +591,25 @@ var CONFIG = {
       erro.textContent='';
       btn.disabled=true; btn.textContent='Enviando...';
 
-      var params=new URLSearchParams(location.search), utm={};
-      ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k){if(params.get(k))utm[k]=params.get(k);});
-      var lead=Object.assign({nome:nome,email:email,whatsapp:'55'+fone,pagina:location.href,data:new Date().toISOString()},utm);
+      // O id do Lead: o MESMO no Pixel da página (eventID) e no Stafy (que manda o Lead também pelo
+      // servidor, a API de Conversões) — a Meta junta os dois e conta UM Lead.
+      var idDoLead = window.StafyFormulario ? window.StafyFormulario.novoIdDoLead() : null;
+      if(window.fbq) window.fbq('track','Lead',{content_name:'Black Friday IBPROF'}, idDoLead ? {eventID:idDoLead} : undefined);
 
-      if(window.fbq) window.fbq('track','Lead',{content_name:'Black Friday IBPROF'});
-
-      // 1) A cópia na planilha (se ligada). `keepalive` deixa o pedido terminar mesmo depois que a pessoa sai da página.
-      var planilha = CONFIG.webhook
-        ? fetch(CONFIG.webhook,{method:'POST',mode:'no-cors',keepalive:true,headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify(lead)}).catch(function(){})
-        : Promise.resolve();
-
-      // 2) O formulário do Stafy — com a origem inteira (integracoes/stafy-formulario.js).
+      // O formulário do Stafy — com a origem inteira (integracoes/stafy-formulario.js). Os cadastros vão
+      // só para o Stafy: o que ele grava e o que ele capta sem a pessoa ver está no passo "Campos ocultos".
       var stafyLigado = !!(CONFIG.stafy && CONFIG.stafy.endereco && window.StafyFormulario);
       var stafy = stafyLigado
         ? window.StafyFormulario.enviar({
             endereco: CONFIG.stafy.endereco,
             campos: {name:nome, email:email, phone:'55'+fone},
+            idDoEvento: idDoLead,
             prazoMs: CONFIG.stafy.prazoMs
           })
         : Promise.resolve({ok:true, tipo:'desligado'});
 
-      // Com o Stafy ligado, a página espera só a resposta dele; sem ele, espera a planilha até 2,5 s (como antes).
-      Promise.all([stafyLigado ? null : Promise.race([planilha,espera(2500)]), stafy]).then(function(r){
-        var res = r[1] || {};
+      stafy.then(function(res){
+        res = res || {};
         if(res.tipo==='dado'){
           // O Stafy recusou o dado — a pessoa corrige e envia de novo.
           if(res.erro==='phone_invalid') return liberar('Confira o seu WhatsApp com DDD — esse número não parece válido.', tel);
@@ -626,8 +618,8 @@ var CONFIG = {
         }
         if(res.tipo==='limite') return liberar('Muitas tentativas seguidas. Espere um minuto e tente de novo.');
         if(res.tipo==='fora' && window.console) console.warn('[Stafy] o cadastro não chegou ao Stafy:', res.erro);
-        // Recebido — ou o Stafy estava fora do ar: a pessoa segue para o obrigado do mesmo jeito
-        // (a planilha guardou a cópia, e travar a pessoa aqui perderia o lead de vez).
+        // Recebido — ou o Stafy demorou/estava fora do ar: a pessoa segue para o obrigado do mesmo jeito
+        // (o pedido segue em segundo plano com `keepalive`; travar a pessoa aqui perderia o lead de vez).
         irParaObrigado(res.destino);
       });
     });

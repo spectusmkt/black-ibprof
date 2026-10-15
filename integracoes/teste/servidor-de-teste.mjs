@@ -12,8 +12,8 @@
    O que ele faz:
      · porta 5500 — serve a página. No index.html, troca na hora (sem mexer no arquivo):
          https://www.stafy.app  → http://localhost:5501   (o "Stafy de mentira")
-         a planilha do Google   → http://localhost:5501/planilha
-         o Pixel da Meta        → um arquivo vazio (nenhum evento sai para a Meta)
+         o Pixel da Meta        → um arquivo vazio (nenhum evento sai para a Meta; as chamadas
+                                  ficam na fila do fbq, em window.fbq.queue, para o teste conferir)
      · porta 5501 — o "Stafy de mentira": responde como a rota de verdade
        (POST /api/forms/<formulario>/submit, com CORS) e MOSTRA no terminal o
        corpo que a página mandou, já conferido com as regras do Stafy.
@@ -69,7 +69,6 @@ http.createServer((req, res) => {
     let html = fs.readFileSync(arquivo, 'utf8');
     html = html
       .split('https://www.stafy.app').join(STAFY_LOCAL)
-      .replace(/https:\/\/script\.google\.com\/macros\/s\/[^'"]+\/exec/g, `${STAFY_LOCAL}/planilha`)
       .split('https://connect.facebook.net/en_US/fbevents.js').join(`${STAFY_LOCAL}/fbevents-de-mentira.js`);
     res.writeHead(200, { 'Content-Type': TIPOS['.html'], 'Cache-Control': 'no-store' });
     return res.end(html);
@@ -115,6 +114,11 @@ function conferir(corpo) {
   if (corpo.stafy_params && (typeof corpo.stafy_params !== 'object' || Array.isArray(corpo.stafy_params))) {
     avisos.push('stafy_params precisa ser um objeto');
   }
+  /* O id do Lead (o mesmo do fbq): a rota do Stafy só aceita letras, números, - e _, de 8 a 64 —
+     fora disso ela usa o dela, e o Pixel e o servidor contariam dois Leads. */
+  if (corpo.stafy_evento_id !== undefined && !/^[A-Za-z0-9_-]{8,64}$/.test(String(corpo.stafy_evento_id))) {
+    avisos.push('stafy_evento_id fora do formato (8 a 64: letras, números, - e _) — o Lead contaria duas vezes');
+  }
   return avisos;
 }
 
@@ -134,6 +138,7 @@ function mostrar(slug, consulta, tipo, corpo, avisos) {
     console.log('stafy_origem.primeira:', JSON.stringify(origem.primeira));
     console.log('stafy_origem.fbp / fbc:', origem.fbp, '/', origem.fbc);
   }
+  console.log('stafy_evento_id (o mesmo do fbq):', corpo.stafy_evento_id || '(nenhum)');
   console.log(avisos.length ? `⚠️  ${avisos.join(' · ')}` : '✅ o corpo passa nas regras do Stafy');
 }
 
@@ -156,12 +161,6 @@ http.createServer(async (req, res) => {
     if (!arq || !fs.existsSync(arq)) { res.writeHead(404, CORS); return res.end(); }
     res.writeHead(200, { 'Content-Type': TIPOS['.js'], ...CORS }); return res.end(fs.readFileSync(arq));
   }
-  if (req.method === 'POST' && url.pathname === '/planilha') {
-    await lerCorpo(req);
-    console.log('📗 a planilha (de mentira) recebeu a cópia');
-    res.writeHead(200); return res.end('ok');
-  }
-
   const rota = url.pathname.match(/^\/api\/forms\/([^/]+)\/submit$/);
   if (req.method === 'POST' && rota) {
     const slug = decodeURIComponent(rota[1]);
@@ -184,7 +183,9 @@ http.createServer(async (req, res) => {
     if (MODO === 'limite') return responder(429, { error: 'rate_limited' });
     if (slug === 'nao-existe') return responder(404, { error: 'form_not_found' });
     if (String(corpo.phone || '').includes('11111111')) return responder(422, { error: 'phone_invalid' });
-    return responder(200, { ok: true, redirect_url: null, message: 'Recebido! Obrigado.', contactId: 'contato-de-teste' });
+    /* Como a rota de verdade: o id do Lead volta na resposta (o que a página mandou, ou o do envio). */
+    const eventoId = /^[A-Za-z0-9_-]{8,64}$/.test(String(corpo.stafy_evento_id || '')) ? corpo.stafy_evento_id : 'lead-envio-de-teste';
+    return responder(200, { ok: true, redirect_url: null, message: 'Recebido! Obrigado.', contactId: 'contato-de-teste', evento_id: eventoId });
   }
 
   res.writeHead(404, CORS); res.end();

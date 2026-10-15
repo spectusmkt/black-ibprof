@@ -10,14 +10,22 @@
 
    Como usar (o index.html já faz isso):
 
+     var idDoLead = StafyFormulario.novoIdDoLead();
+     fbq('track', 'Lead', {}, { eventID: idDoLead });     // o Pixel da página, com o MESMO id
      StafyFormulario.enviar({
-       endereco: 'https://www.stafy.app/api/forms/<formulario>/submit?negocio=<negocio>',
-       campos:   { name: 'Ana Souza', email: 'ana@exemplo.com', phone: '5545999990000' },
-       prazoMs:  8000
+       endereco:   'https://www.stafy.app/api/forms/<formulario>/submit?negocio=<negocio>',
+       campos:     { name: 'Ana Souza', email: 'ana@exemplo.com', phone: '5545999990000' },
+       idDoEvento: idDoLead,                              // vai em `stafy_evento_id`
+       prazoMs:    8000
      }).then(function (r) { ... });
 
+   O id do Lead: o formulário do Stafy pode mandar o MESMO Lead pela API de Conversões da Meta (o
+   servidor dele, com o token do negócio). A Meta junta o do Pixel e o do servidor pelo id e conta
+   UM Lead — por isso a página usa o mesmo id nos dois lados. Sem `idDoEvento`, o Stafy usa o dele
+   e o devolve na resposta (`r.evento`).
+
    O resultado (`r`) é sempre um destes — a promessa nunca falha:
-     { ok: true,  tipo: 'ok',     destino, mensagem, contato }  → o Stafy recebeu
+     { ok: true,  tipo: 'ok',     destino, mensagem, contato, evento }  → o Stafy recebeu
      { ok: false, tipo: 'dado',   erro }  → 422: o Stafy recusou o dado (ex.: 'phone_invalid')
      { ok: false, tipo: 'limite', erro }  → 429: muitas tentativas do mesmo IP
      { ok: false, tipo: 'fora',   erro }  → Stafy fora do ar, sem rede, demorou, ou o
@@ -34,6 +42,10 @@
                        (window.StafyOrigem.pacote(), com a PRIMEIRA e a ÚLTIMA origem)
                        ou, se o script não carregou, um pacote mínimo montado aqui —
                        sempre com os cookies _fbp e _fbc da Meta.
+     · stafy_evento_id = o id do Lead (o mesmo do `eventID` do fbq), quando a página manda.
+
+   No Stafy, o passo "Campos ocultos" do formulário diz o que cada um destes vira (e liga/desliga
+   cada coisa captada); o que estiver desligado lá não é gravado, mesmo que a página mande.
 
    Por que `text/plain` e não `application/json`: assim o navegador manda o
    pedido direto, sem a pergunta prévia de CORS (OPTIONS) — uma ida a menos ao
@@ -68,6 +80,13 @@
   /* Os do Stafy: viajam por conta própria, nunca como parâmetro do lead. */
   var NOSSOS = /^(pc|negocio|_h|stafy_.*)$/i;
   var UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  /* O id do Lead que o Stafy aceita (lib/pesquisas/evento-da-meta.ts, eventoIdValido). */
+  var ID_DO_EVENTO = /^[A-Za-z0-9_-]{8,64}$/;
+
+  /* Um id para o Lead — o mesmo no fbq (eventID) e no envio ao Stafy (stafy_evento_id). */
+  function novoIdDoLead() {
+    return ('lead-' + new Date().getTime().toString(36) + '-' + Math.random().toString(36).slice(2, 10)).slice(0, 64);
+  }
 
   /* Texto limpo, com teto. Placeholder não substituído ({{utm_source}}, {campanha})
      não é valor — o Stafy também o descarta. */
@@ -232,6 +251,7 @@
       if (v && !corpo[UTMS[i]]) corpo[UTMS[i]] = v;
     }
     if (pc) corpo.pc = pc;
+    if (opcoes.idDoEvento && ID_DO_EVENTO.test(String(opcoes.idDoEvento))) corpo.stafy_evento_id = String(opcoes.idDoEvento);
     corpo.stafy_params = parametrosDaUrl(busca);
     corpo.stafy_pagina = janela.location.href;
     corpo.stafy_referrer = doc.referrer || null;
@@ -242,7 +262,7 @@
   function classificar(status, dados) {
     var d = dados && typeof dados === 'object' ? dados : {};
     if (status >= 200 && status < 300 && d.ok) {
-      return { ok: true, tipo: 'ok', destino: d.redirect_url || null, mensagem: d.message || null, contato: d.contactId || null };
+      return { ok: true, tipo: 'ok', destino: d.redirect_url || null, mensagem: d.message || null, contato: d.contactId || null, evento: d.evento_id || null };
     }
     if (status === 422) return { ok: false, tipo: 'dado', erro: d.error || 'invalido' };
     if (status === 429) return { ok: false, tipo: 'limite', erro: d.error || 'rate_limited' };
@@ -286,9 +306,10 @@
   }
 
   janela.StafyFormulario = {
-    versao: 1,
+    versao: 2,
     enviar: enviar,
     montarEnvio: montarEnvio,
-    pacoteDaOrigem: pacoteDaOrigem
+    pacoteDaOrigem: pacoteDaOrigem,
+    novoIdDoLead: novoIdDoLead
   };
 })(window, document);
